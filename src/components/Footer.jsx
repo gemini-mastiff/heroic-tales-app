@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import WidthContainer from "./WidthContainer.jsx";
 
 const FooterStyled = styled.footer`
   background-color: var(--MAIN-COLOUR);
@@ -9,7 +10,9 @@ const FooterStyled = styled.footer`
 export default function Footer() {
   return (
     <FooterStyled>
-      <p>Placeholder Text</p>
+      <WidthContainer>
+        <p>Placeholder Text</p>
+      </WidthContainer>
     </FooterStyled>
   );
 }
