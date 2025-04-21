@@ -9,8 +9,7 @@
   background-color: var(--BG-COLOUR);
 }
 
-.header,
-.footer {
+.header {
   background-color: var(--MAIN-COLOUR);
   min-height: 50px;
 }

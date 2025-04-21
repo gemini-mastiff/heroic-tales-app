@@ -1,4 +1,5 @@
 import GlobalStyle from "./components/GlobalStyle.jsx";
+import Footer from "./components/Footer.jsx";
 import "./App.css";
 
 function App() {
@@ -17,9 +18,7 @@ function App() {
             ullam quisquam ad distinctio reprehenderit eum!
           </p>
         </main>
-        <footer className="footer">
-          <p>Footer Placeholder</p>
-        </footer>
+        <Footer />
       </div>
     </>
   );
