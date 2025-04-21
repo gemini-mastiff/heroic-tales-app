@@ -1,5 +1,6 @@
 import GlobalStyle from "./components/GlobalStyle.jsx";
 import WidthContainer from "./components/WidthContainer.jsx";
+import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import "./App.css";
 
@@ -8,11 +9,7 @@ function App() {
     <>
       <GlobalStyle />
       <div className="app">
-        <header className="header">
-          <WidthContainer>
-            <h1>Heroic Tales</h1>
-          </WidthContainer>
-        </header>
+        <Header />
         <main className="main">
           <WidthContainer>
             <p>
