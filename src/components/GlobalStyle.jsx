@@ -23,8 +23,14 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  :root{
+    --BG-COLOUR: #1F1F1F;
+    --MAIN-COLOUR: #3F3F46;
+    --PRIMARY-TEXT: #E5E5E5;
+  }
+
   body {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-family: 'DM Sans', sans-serif;
     line-height: 1.5rem;
   }
