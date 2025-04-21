@@ -1,0 +1,16 @@
+.app {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  color: var(--PRIMARY-TEXT);
+}
+
+.main {
+  background-color: var(--BG-COLOUR);
+}
+
+.header,
+.footer {
+  background-color: var(--MAIN-COLOUR);
+  min-height: 50px;
+}
