@@ -4,7 +4,7 @@ import WidthContainer from "./WidthContainer.jsx";
 const FooterStyled = styled.footer`
   background-color: var(--MAIN-COLOUR);
   text-align: center;
-  padding: 1em;
+  padding: 1em 0;
 `;
 
 export default function Footer() {
