@@ -3,17 +3,17 @@ import noImgSvg from "../assets/account.svg";
 
 export default function CharSheet({ char }) {
   return (
-    <CharInfo>
+    <CharHeader>
       <div>
         <CharName>{char.name}</CharName>
         <CharRole>{`${char.race} ${char.class} (${char.subclass})`}</CharRole>
       </div>
       <CharImg src={char.img ? char.img : noImgSvg} alt="" />
-    </CharInfo>
+    </CharHeader>
   );
 }
 
-const CharInfo = styled.div`
+const CharHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
