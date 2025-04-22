@@ -19,6 +19,10 @@ const RollLog = styled.div`
   grid-row: 1/3;
 `;
 
+const CharSheetContainer = styled.div``;
+
+const DiceBox = styled.div``;
+
 export default function Main() {
   return (
     <MainStyled>
@@ -30,18 +34,18 @@ export default function Main() {
             rem consequuntur enim! Amet assumenda adipisci quam quas
             consequatur, eaque voluptatem tempora asperiores.
           </RollLog>
-          <p>
+          <CharSheetContainer>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis
             fugit quibusdam eveniet recusandae ipsam quisquam. Illum vitae
             laboriosam, facilis repellat quasi sit dolorem odio aperiam magnam
             ipsum, non laudantium possimus.
-          </p>
-          <p>
+          </CharSheetContainer>
+          <DiceBox>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam,
             placeat velit non ullam expedita nam necessitatibus error in itaque
             dolorum, officiis consectetur aut ab cupiditate libero dignissimos
             fuga cum mollitia?
-          </p>
+          </DiceBox>
         </GameGrid>
       </WidthContainer>
     </MainStyled>
