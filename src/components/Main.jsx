@@ -12,16 +12,20 @@ const GameGrid = styled.div`
   grid-template-columns: 2fr 3fr;
   grid-template-rows: 1fr 1fr;
   gap: 1em;
-  border: 1px solid red;
 `;
 
 const RollLog = styled.div`
   grid-row: 1/3;
+  background-color: var(--MAIN-COLOUR);
 `;
 
-const CharSheetContainer = styled.div``;
+const CharSheetContainer = styled.div`
+  background-color: var(--MAIN-COLOUR);
+`;
 
-const DiceBox = styled.div``;
+const DiceBox = styled.div`
+  background-color: var(--MAIN-COLOUR);
+`;
 
 export default function Main() {
   return (
