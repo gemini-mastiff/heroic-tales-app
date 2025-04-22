@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import WidthContainer from "./WidthContainer.jsx";
+import CharSheet from "./CharSheet.jsx";
 
 const MainStyled = styled.main`
   background-color: var(--BG-COLOUR);
@@ -40,10 +41,7 @@ export default function Main() {
             consequatur, eaque voluptatem tempora asperiores.
           </RollLog>
           <CharSheetContainer>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis
-            fugit quibusdam eveniet recusandae ipsam quisquam. Illum vitae
-            laboriosam, facilis repellat quasi sit dolorem odio aperiam magnam
-            ipsum, non laudantium possimus.
+            <CharSheet />
           </CharSheetContainer>
           <DiceBox>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam,
