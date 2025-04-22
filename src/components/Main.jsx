@@ -9,16 +9,16 @@ const CharArr = [
     class: "Ranger",
     subclass: "Hunter",
     skills: [
-      { skill: "Shooting", rating: 2 },
+      { name: "Shooting", rating: 2 },
       {
-        skill: "Tracking",
+        name: "Tracking",
         rating: 1,
       },
       {
-        skill: "Traps",
+        name: "Traps",
         rating: 1,
       },
-      { skill: "Survival", rating: 1 },
+      { name: "Survival", rating: 1 },
     ],
     abilities: [],
     stats: {
