@@ -28,7 +28,7 @@ const CharName = styled.h2`
 
 const CharRole = styled.p`
   font-family: "Spectral SC", serif;
-  font-size: 1.5;
+  font-size: 1.5rem;
 `;
 
 const CharImg = styled.img`
