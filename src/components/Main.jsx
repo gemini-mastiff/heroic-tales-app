@@ -30,6 +30,7 @@ const CharArr = [
     },
     desc: null,
     inventory: [],
+    img: null,
   },
 ];
 
