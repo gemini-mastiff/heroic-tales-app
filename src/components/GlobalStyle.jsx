@@ -33,6 +33,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 1.4rem;
     font-family: 'DM Sans', sans-serif;
     line-height: 1.5;
+    color: var(--PRIMARY-TEXT);
   }
 `;
 
