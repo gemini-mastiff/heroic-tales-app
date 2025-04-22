@@ -6,7 +6,7 @@ const HeaderContainer = styled.header`
 `;
 
 const HeaderStyled = styled.div`
-  padding: 1em 0;
+  padding: 0.5em 0;
 `;
 
 const Logo = styled.h1`
