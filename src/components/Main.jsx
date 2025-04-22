@@ -78,12 +78,15 @@ const GameGrid = styled.div`
 const RollLog = styled.div`
   grid-row: 1/3;
   background-color: var(--MAIN-COLOUR);
+  padding: 0.5em;
 `;
 
 const CharSheetContainer = styled.div`
   background-color: var(--MAIN-COLOUR);
+  padding: 0.5em;
 `;
 
 const DiceBox = styled.div`
   background-color: var(--MAIN-COLOUR);
+  padding: 0.5em;
 `;
