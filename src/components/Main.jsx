@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import WidthContainer from "./WidthContainer.jsx";
 import CharSheet from "./CharSheet.jsx";
+import DiceBox from "./DiceBox.jsx";
 
 const CharArr = [
   {
@@ -50,12 +51,7 @@ export default function Main() {
               return <CharSheet char={char} />;
             })}
           </CharSheetContainer>
-          <DiceBox>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam,
-            placeat velit non ullam expedita nam necessitatibus error in itaque
-            dolorum, officiis consectetur aut ab cupiditate libero dignissimos
-            fuga cum mollitia?
-          </DiceBox>
+          <DiceBox></DiceBox>
         </GameGrid>
       </WidthContainer>
     </MainStyled>
@@ -83,11 +79,6 @@ const RollLog = styled.div`
 `;
 
 const CharSheetContainer = styled.div`
-  background-color: var(--MAIN-COLOUR);
-  padding: 0.5em;
-`;
-
-const DiceBox = styled.div`
   background-color: var(--MAIN-COLOUR);
   padding: 0.5em;
 `;
