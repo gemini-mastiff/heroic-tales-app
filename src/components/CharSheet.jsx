@@ -8,7 +8,7 @@ import magicSvg from "../assets/magic.svg";
 
 export default function CharSheet({ char }) {
   return (
-    <div>
+    <CharSheetStyled>
       <CharHeader>
         <div>
           <CharName>{char.name}</CharName>
@@ -43,30 +43,35 @@ export default function CharSheet({ char }) {
         </CharAbilities>
         <CharNums>
           <CharNumRow>
-            <NumIcon src={healthSvg} alt="Health" />
             <p>{char.stats.health}</p>
+            <NumIcon src={healthSvg} alt="Health" />
           </CharNumRow>
           <CharNumRow>
-            <NumIcon src={hitsSvg} alt="Hits" />
             <p>{char.stats.hits}</p>
+            <NumIcon src={hitsSvg} alt="Hits" />
           </CharNumRow>
           <CharNumRow>
-            <NumIcon src={injurySvg} alt="Injuries" />
             <p>{char.stats.injuries}</p>
+            <NumIcon src={injurySvg} alt="Injuries" />
           </CharNumRow>
           <CharNumRow>
-            <NumIcon src={shieldSvg} alt="Armour" />
             <p>{char.stats.armour}</p>
+            <NumIcon src={shieldSvg} alt="Armour" />
           </CharNumRow>
           <CharNumRow>
-            <NumIcon src={magicSvg} alt="Armour" />
             <p>{char.stats.cast}</p>
+            <NumIcon src={magicSvg} alt="Cast" />
           </CharNumRow>
         </CharNums>
       </CharStats>
-    </div>
+    </CharSheetStyled>
   );
 }
+
+const CharSheetStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 const CharHeader = styled.div`
   display: flex;
@@ -92,8 +97,9 @@ const CharImg = styled.img`
 `;
 
 const CharStats = styled.div`
-  display: grid;
-  grid-template-columns: 2fr 2fr 1fr;
+  margin-top: 1em;
+  display: flex;
+  align-items: stretch;
   gap: 1em;
 `;
 
@@ -101,7 +107,10 @@ const CharHeading = styled.h3`
   font-family: "Spectral SC", serif;
 `;
 
-const CharSkills = styled.div``;
+const CharSkills = styled.div`
+  flex: 2;
+  background-color: var(--MAIN-COLOUR);
+`;
 
 const SkillList = styled.ul`
   list-style: none;
@@ -110,14 +119,19 @@ const SkillList = styled.ul`
 const SkillItem = styled.li`
   display: grid;
   grid-template-columns: 20px 1fr 20px;
+  gap: 0.5em;
 `;
 
-const CharAbilities = styled.div``;
+const CharAbilities = styled.div`
+  flex: 2;
+  background-color: var(--MAIN-COLOUR);
+`;
 
 const CharNums = styled.div``;
 
 const CharNumRow = styled.div`
   display: flex;
+  gap: 0.5em;
 `;
 const NumIcon = styled.img`
   width: 30px;
