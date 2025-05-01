@@ -81,14 +81,14 @@ const CharHeader = styled.div`
 
 const CharName = styled.h2`
   font-family: "Spectral SC", serif;
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: bold;
   text-decoration: underline;
 `;
 
 const CharRole = styled.p`
   font-family: "Spectral SC", serif;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 `;
 
 const CharImg = styled.img`
@@ -99,7 +99,6 @@ const CharImg = styled.img`
 const CharStats = styled.div`
   margin-top: 1em;
   display: flex;
-  align-items: stretch;
   gap: 1em;
 `;
 
