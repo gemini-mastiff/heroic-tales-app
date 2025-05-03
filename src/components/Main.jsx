@@ -1,8 +1,9 @@
 import styled from "styled-components";
+import { useState } from "react";
+import rollCalc from "../js/rollCalc.js";
 import WidthContainer from "./WidthContainer.jsx";
 import CharSheet from "./CharSheet.jsx";
 import DiceBox from "./DiceBox.jsx";
-import { useState } from "react";
 
 const initCharArr = [
   {
@@ -41,6 +42,7 @@ const initCharArr = [
 export default function Main() {
   const [charArr, setCharArr] = useState(initCharArr);
   const [currChar, setCurrChar] = useState(0);
+  const [results, setResults] = useState(false);
 
   const skillTotal = charArr[currChar].skills
     .filter((skill) => skill.active)
@@ -74,6 +76,9 @@ export default function Main() {
       })
     );
   };
+  const handleResults = (checkNum) => {
+    setResults(rollCalc(checkNum + 1, skillTotal));
+  };
 
   return (
     <MainStyled>
@@ -92,7 +97,13 @@ export default function Main() {
               skillTotal={skillTotal}
             />
           </CharSheetContainer>
-          <DiceBox skillTotal={skillTotal} resetSkills={resetSkills}></DiceBox>
+          <DiceBox
+            skillTotal={skillTotal}
+            results={results}
+            resetSkills={resetSkills}
+            handleResults={handleResults}
+            setResults={setResults}
+          ></DiceBox>
         </GameGrid>
       </WidthContainer>
     </MainStyled>

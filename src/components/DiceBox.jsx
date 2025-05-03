@@ -1,10 +1,14 @@
 import { useState } from "react";
 import styled from "styled-components";
-import rollCalc from "../js/rollCalc.js";
 import Button from "./Button.jsx";
 
-export default function DiceBox({ skillTotal, resetSkills }) {
-  const [results, setResults] = useState(false);
+export default function DiceBox({
+  skillTotal,
+  results,
+  resetSkills,
+  handleResults,
+  setResults,
+}) {
   const [checkNum, setCheckNum] = useState(1);
 
   console.log(results);
@@ -12,10 +16,6 @@ export default function DiceBox({ skillTotal, resetSkills }) {
   const handleDifficulty = (value) => {
     setResults(false);
     setCheckNum(value);
-  };
-
-  const handleResults = () => {
-    setResults(rollCalc(checkNum + 1, skillTotal));
   };
 
   const checkDice = [];
@@ -70,7 +70,7 @@ export default function DiceBox({ skillTotal, resetSkills }) {
       <DiceRow>{skillDice.length > 0 ? skillDice : "Add some skills!"}</DiceRow>
       <ButtonContainer>
         <Button onClick={() => resetSkills()}>Reset</Button>
-        <Button onClick={() => handleResults()}>Roll</Button>
+        <Button onClick={() => handleResults(checkNum)}>Roll</Button>
       </ButtonContainer>
     </DiceBoxStyled>
   );
