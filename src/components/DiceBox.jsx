@@ -2,24 +2,24 @@ import { useState } from "react";
 import styled from "styled-components";
 
 export default function DiceBox({ skillTotal }) {
-  const [result, setResult] = useState(false);
+  const [result, setResult] = useState(null);
   const [diffNum, setDiffNum] = useState(2);
 
   const handleDifficulty = (value) => {
     setDiffNum(value);
   };
 
-  const initDice = [];
+  const diffDice = [];
   {
     for (let i = 1; i <= 3; i++) {
-      initDice.push(
-        <Dice
+      diffDice.push(
+        <DiceHover
           key={`initDice${i}`}
           isSelected={i <= diffNum}
           onClick={() => handleDifficulty(i)}
         >
           ?
-        </Dice>
+        </DiceHover>
       );
     }
   }
@@ -38,7 +38,7 @@ export default function DiceBox({ skillTotal }) {
   return (
     <DiceBoxStyled>
       <Header>Dice Box</Header>
-      <DiceRow>{initDice}</DiceRow>
+      <DiceRow>{diffDice}</DiceRow>
       <hr />
       <DiceRow>{skillDice}</DiceRow>
     </DiceBoxStyled>
@@ -76,10 +76,10 @@ const Dice = styled.div`
   text-align: center;
   vertical-align: middle;
   line-height: 50px;
+`;
+
+const DiceHover = styled(Dice)`
   &:hover {
     opacity: 0.6;
   }
 `;
-
-// ? "invert(99%) sepia(1%) saturate(4702%) hue-rotate(36deg) brightness(141%) contrast(80%)"
-//       : "invert(0%) sepia(73%) saturate(146%) hue-rotate(9deg) brightness(101%) contrast(76%)"
