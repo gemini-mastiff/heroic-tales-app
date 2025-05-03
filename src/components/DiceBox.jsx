@@ -10,6 +10,7 @@ export default function DiceBox({ skillTotal, resetSkills }) {
   console.log(results);
 
   const handleDifficulty = (value) => {
+    setResults(false);
     setCheckNum(value);
   };
 
