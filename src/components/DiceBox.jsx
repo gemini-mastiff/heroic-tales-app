@@ -1,8 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components";
+import Button from "./Button.jsx";
 
-export default function DiceBox({ skillTotal }) {
-  const [result, setResult] = useState(null);
+export default function DiceBox({ skillTotal, resetSkills }) {
+  const [result, setResult] = useState(false);
   const [diffNum, setDiffNum] = useState(2);
 
   const handleDifficulty = (value) => {
@@ -41,6 +42,10 @@ export default function DiceBox({ skillTotal }) {
       <DiceRow>{diffDice}</DiceRow>
       <hr />
       <DiceRow>{skillDice}</DiceRow>
+      <ButtonContainer>
+        <Button onClick={() => resetSkills()}>Reset</Button>
+        <Button>Roll</Button>
+      </ButtonContainer>
     </DiceBoxStyled>
   );
 }
@@ -58,12 +63,12 @@ const Header = styled.p`
 `;
 
 const DiceRow = styled.div`
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1em;
 `;
-
 const Dice = styled.div`
   color: ${(props) =>
     props.isSelected ? "var(--PRIMARY-TEXT)" : "var(--BG-COLOUR)"};
@@ -77,9 +82,13 @@ const Dice = styled.div`
   vertical-align: middle;
   line-height: 50px;
 `;
-
 const DiceHover = styled(Dice)`
   &:hover {
     opacity: 0.6;
   }
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;

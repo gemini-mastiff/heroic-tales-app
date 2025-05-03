@@ -55,7 +55,7 @@ export default function Main() {
           char.skills.map((skillItem) => {
             if (skillItem.name === skill.name) {
               skill.active = !skill.active;
-              return { skill };
+              return skill;
             }
           });
           return char;
@@ -65,13 +65,17 @@ export default function Main() {
   };
 
   const resetSkills = () => {
-    const arr = [];
-    for (let i = 0, j = charArr[currChar].skills.length; i < j; i++) {
-      const skill = charArr[currChar].skills[i];
-      arr.push({ name: skill.name, rating: skill.rating, active: false });
-    }
-    console.log(arr);
-    setCharSkills(arr);
+    setCharArr(
+      charArr.map((char) => {
+        if (char.name === charArr[currChar].name) {
+          char.skills.map((skill) => {
+            skill.active = false;
+            return skill;
+          });
+          return char;
+        }
+      })
+    );
   };
 
   return (
