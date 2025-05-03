@@ -6,7 +6,9 @@ import injurySvg from "../assets/injury.svg";
 import shieldSvg from "../assets/shield.svg";
 import magicSvg from "../assets/magic.svg";
 
-export default function CharSheet({ char, handleSkill }) {
+export default function CharSheet({ char, handleSkill, skillTotal }) {
+  const disableSkills = skillTotal >= 6;
+
   return (
     <CharSheetStyled>
       <CharHeader>
@@ -22,7 +24,10 @@ export default function CharSheet({ char, handleSkill }) {
           <SkillList>
             {char.skills.map((skill) => (
               <SkillItem key={skill.name}>
-                <button onClick={() => handleSkill(skill)}>
+                <button
+                  onClick={() => handleSkill(skill)}
+                  disabled={disableSkills && !skill.active}
+                >
                   {skill.active ? "-" : "+"}
                 </button>
                 <p>{skill.name}</p>

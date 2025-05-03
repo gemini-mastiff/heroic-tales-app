@@ -1,19 +1,13 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-export default function DiceBox({ charSkills, handleSkill }) {
+export default function DiceBox({ skillTotal }) {
   const [result, setResult] = useState(false);
   const [diffNum, setDiffNum] = useState(2);
 
   const handleDifficulty = (value) => {
     setDiffNum(value);
   };
-
-  let skillNum = charSkills
-    .filter((skill) => skill.active)
-    .reduce((acc, skill) => acc + skill.rating, 0);
-  if (skillNum > 6) skillNum = 6;
-  else if (skillNum < 0) skillNum = 0;
 
   const initDice = [];
   {
@@ -32,7 +26,7 @@ export default function DiceBox({ charSkills, handleSkill }) {
 
   const skillDice = [];
   {
-    for (let i = 1; i <= skillNum; i++) {
+    for (let i = 1; i <= skillTotal; i++) {
       skillDice.push(
         <Dice key={`skillDice${i}`} isSelected={true}>
           ?

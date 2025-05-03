@@ -14,7 +14,7 @@ const CharArr = [
       { name: "Shooting", rating: 2, active: false },
       {
         name: "Tracking",
-        rating: 1,
+        rating: 3,
         active: false,
       },
       {
@@ -42,6 +42,10 @@ export default function Main() {
   const [currChar, setCurrChar] = useState(CharArr[0]);
   const [charSkills, setCharSkills] = useState(currChar.skills);
 
+  const skillTotal = charSkills
+    .filter((skill) => skill.active)
+    .reduce((acc, skill) => acc + skill.rating, 0);
+
   const handleSkill = (skill) => {
     skill.active = !skill.active;
     const copy = charSkills.filter(
@@ -61,9 +65,13 @@ export default function Main() {
             consequatur, eaque voluptatem tempora asperiores.
           </RollLog>
           <CharSheetContainer>
-            <CharSheet char={currChar} handleSkill={handleSkill} />
+            <CharSheet
+              char={currChar}
+              handleSkill={handleSkill}
+              skillTotal={skillTotal}
+            />
           </CharSheetContainer>
-          <DiceBox charSkills={charSkills} handleSkill={handleSkill}></DiceBox>
+          <DiceBox skillTotal={skillTotal}></DiceBox>
         </GameGrid>
       </WidthContainer>
     </MainStyled>
