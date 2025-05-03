@@ -5,32 +5,19 @@ import Button from "./Button.jsx";
 
 export default function DiceBox({ skillTotal, resetSkills }) {
   const [results, setResults] = useState(false);
-  const [checkNum, setcheckNum] = useState(2);
+  const [checkNum, setCheckNum] = useState(1);
 
   console.log(results);
 
-  const handlecheckiculty = (value) => {
-    setcheckNum(value);
+  const handleDifficulty = (value) => {
+    setCheckNum(value);
   };
 
   const handleResults = () => {
-    setResults(rollCalc(checkNum, skillTotal));
+    setResults(rollCalc(checkNum + 1, skillTotal));
   };
 
   const checkDice = [];
-  {
-    for (let i = 1; i <= 3; i++) {
-      checkDice.push(
-        <DiceHover
-          key={`initDice${i}`}
-          isSelected={i <= checkNum}
-          onClick={() => handlecheckiculty(i)}
-        >
-          ?
-        </DiceHover>
-      );
-    }
-  }
 
   const skillDice = [];
   {
@@ -43,12 +30,44 @@ export default function DiceBox({ skillTotal, resetSkills }) {
     }
   }
 
+  if (results) {
+    {
+      for (let i = 0; i < 3; i++) {
+        checkDice.push(
+          <DiceHover
+            key={`checkDiceResults${i}`}
+            isSelected={i < results.results.checkResults.length}
+            onClick={() => handleDifficulty(i)}
+          >
+            {i < results.results.checkResults.length
+              ? results.results.checkResults[i]
+              : "?"}
+          </DiceHover>
+        );
+      }
+    }
+  } else {
+    {
+      for (let i = 0; i < 3; i++) {
+        checkDice.push(
+          <DiceHover
+            key={`initDice${i}`}
+            isSelected={i <= checkNum}
+            onClick={() => handleDifficulty(i)}
+          >
+            ?
+          </DiceHover>
+        );
+      }
+    }
+  }
+
   return (
     <DiceBoxStyled>
       <Header>Dice Box</Header>
       <DiceRow>{checkDice}</DiceRow>
       <hr />
-      <DiceRow>{skillDice}</DiceRow>
+      <DiceRow>{skillDice.length > 0 ? skillDice : "Add some skills!"}</DiceRow>
       <ButtonContainer>
         <Button onClick={() => resetSkills()}>Reset</Button>
         <Button onClick={() => handleResults()}>Roll</Button>
