@@ -4,7 +4,7 @@ import CharSheet from "./CharSheet.jsx";
 import DiceBox from "./DiceBox.jsx";
 import { useState } from "react";
 
-const CharArr = [
+const initCharArr = [
   {
     name: "Sir Tomwell",
     race: "Human",
@@ -39,19 +39,39 @@ const CharArr = [
 ];
 
 export default function Main() {
-  const [currChar, setCurrChar] = useState(CharArr[0]);
-  const [charSkills, setCharSkills] = useState(currChar.skills);
+  const [charArr, setCharArr] = useState(initCharArr);
+  const [currChar, setCurrChar] = useState(0);
 
-  const skillTotal = charSkills
+  console.log(charArr[currChar].skills);
+
+  const skillTotal = charArr[currChar].skills
     .filter((skill) => skill.active)
     .reduce((acc, skill) => acc + skill.rating, 0);
 
   const handleSkill = (skill) => {
-    skill.active = !skill.active;
-    const copy = charSkills.filter(
-      (skillItem) => skillItem.name !== skill.name
+    setCharArr(
+      charArr.map((char) => {
+        if (char.name === charArr[currChar].name) {
+          char.skills.map((skillItem) => {
+            if (skillItem.name === skill.name) {
+              skill.active = !skill.active;
+              return { skill };
+            }
+          });
+          return char;
+        }
+      })
     );
-    setCharSkills([...copy, skill]);
+  };
+
+  const resetSkills = () => {
+    const arr = [];
+    for (let i = 0, j = charArr[currChar].skills.length; i < j; i++) {
+      const skill = charArr[currChar].skills[i];
+      arr.push({ name: skill.name, rating: skill.rating, active: false });
+    }
+    console.log(arr);
+    setCharSkills(arr);
   };
 
   return (
@@ -66,12 +86,12 @@ export default function Main() {
           </RollLog>
           <CharSheetContainer>
             <CharSheet
-              char={currChar}
+              char={charArr[currChar]}
               handleSkill={handleSkill}
               skillTotal={skillTotal}
             />
           </CharSheetContainer>
-          <DiceBox skillTotal={skillTotal}></DiceBox>
+          <DiceBox skillTotal={skillTotal} resetSkills={resetSkills}></DiceBox>
         </GameGrid>
       </WidthContainer>
     </MainStyled>
