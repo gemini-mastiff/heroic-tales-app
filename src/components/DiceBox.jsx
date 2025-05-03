@@ -32,17 +32,16 @@ export default function DiceBox({ skillTotal, resetSkills }) {
   }
 
   if (results) {
+    const checkResults = results.results.checkResults;
     {
       for (let i = 0; i < 3; i++) {
         checkDice.push(
           <DiceHover
             key={`checkDiceResults${i}`}
-            isSelected={i < results.results.checkResults.length}
+            isSelected={i < checkResults.length}
             onClick={() => handleDifficulty(i)}
           >
-            {i < results.results.checkResults.length
-              ? results.results.checkResults[i]
-              : "?"}
+            {i < checkResults.length ? checkResults[i] : "?"}
           </DiceHover>
         );
       }
