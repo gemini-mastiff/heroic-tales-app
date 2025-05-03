@@ -2,6 +2,7 @@ import styled from "styled-components";
 import WidthContainer from "./WidthContainer.jsx";
 import CharSheet from "./CharSheet.jsx";
 import DiceBox from "./DiceBox.jsx";
+import { useState } from "react";
 
 const CharArr = [
   {
@@ -36,6 +37,9 @@ const CharArr = [
 ];
 
 export default function Main() {
+  const [currChar, setCurrChar] = useState(CharArr[0]);
+  const [skillList, setSkillList] = useState([]);
+
   return (
     <MainStyled>
       <WidthContainer>
@@ -47,9 +51,7 @@ export default function Main() {
             consequatur, eaque voluptatem tempora asperiores.
           </RollLog>
           <CharSheetContainer>
-            {CharArr.map((char) => {
-              return <CharSheet char={char} />;
-            })}
+            <CharSheet char={currChar} />
           </CharSheetContainer>
           <DiceBox></DiceBox>
         </GameGrid>
