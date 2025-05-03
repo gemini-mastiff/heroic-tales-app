@@ -6,7 +6,7 @@ import injurySvg from "../assets/injury.svg";
 import shieldSvg from "../assets/shield.svg";
 import magicSvg from "../assets/magic.svg";
 
-export default function CharSheet({ char }) {
+export default function CharSheet({ char, handleSkill }) {
   return (
     <CharSheetStyled>
       <CharHeader>
@@ -22,7 +22,9 @@ export default function CharSheet({ char }) {
           <SkillList>
             {char.skills.map((skill) => (
               <SkillItem key={skill.name}>
-                <button>+</button>
+                <button onClick={() => handleSkill(skill)}>
+                  {skill.active ? "-" : "+"}
+                </button>
                 <p>{skill.name}</p>
                 <p>{skill.rating}</p>
               </SkillItem>

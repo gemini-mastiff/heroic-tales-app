@@ -40,6 +40,15 @@ const CharArr = [
 
 export default function Main() {
   const [currChar, setCurrChar] = useState(CharArr[0]);
+  const [charSkills, setCharSkills] = useState(currChar.skills);
+
+  const handleSkill = (skill) => {
+    skill.active = !skill.active;
+    const copy = charSkills.filter(
+      (skillItem) => skillItem.name !== skill.name
+    );
+    setCharSkills([...copy, skill]);
+  };
 
   return (
     <MainStyled>
@@ -52,7 +61,7 @@ export default function Main() {
             consequatur, eaque voluptatem tempora asperiores.
           </RollLog>
           <CharSheetContainer>
-            <CharSheet char={currChar} />
+            <CharSheet char={currChar} handleSkill={handleSkill} />
           </CharSheetContainer>
           <DiceBox></DiceBox>
         </GameGrid>
