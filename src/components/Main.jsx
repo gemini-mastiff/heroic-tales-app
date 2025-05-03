@@ -11,16 +11,18 @@ const CharArr = [
     class: "Ranger",
     subclass: "Hunter",
     skills: [
-      { name: "Shooting", rating: 2 },
+      { name: "Shooting", rating: 2, active: false },
       {
         name: "Tracking",
         rating: 1,
+        active: false,
       },
       {
         name: "Traps",
         rating: 1,
+        active: false,
       },
-      { name: "Survival", rating: 1 },
+      { name: "Survival", rating: 1, active: false },
     ],
     abilities: [],
     stats: {
@@ -38,7 +40,6 @@ const CharArr = [
 
 export default function Main() {
   const [currChar, setCurrChar] = useState(CharArr[0]);
-  const [skillList, setSkillList] = useState([]);
 
   return (
     <MainStyled>
