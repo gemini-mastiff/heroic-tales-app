@@ -42,8 +42,6 @@ export default function Main() {
   const [charArr, setCharArr] = useState(initCharArr);
   const [currChar, setCurrChar] = useState(0);
 
-  console.log(charArr[currChar].skills);
-
   const skillTotal = charArr[currChar].skills
     .filter((skill) => skill.active)
     .reduce((acc, skill) => acc + skill.rating, 0);
@@ -63,7 +61,6 @@ export default function Main() {
       })
     );
   };
-
   const resetSkills = () => {
     setCharArr(
       charArr.map((char) => {
