@@ -63,7 +63,7 @@ export default function Main() {
           <CharSheetContainer>
             <CharSheet char={currChar} handleSkill={handleSkill} />
           </CharSheetContainer>
-          <DiceBox></DiceBox>
+          <DiceBox charSkills={charSkills} handleSkill={handleSkill}></DiceBox>
         </GameGrid>
       </WidthContainer>
     </MainStyled>

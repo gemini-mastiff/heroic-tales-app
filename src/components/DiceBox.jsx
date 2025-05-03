@@ -1,27 +1,52 @@
-import d6Svg1 from "../assets/dice/d6-1.svg";
-import d6Svg2 from "../assets/dice/d6-2.svg";
-import d6Svg3 from "../assets/dice/d6-3.svg";
-import d6Svg4 from "../assets/dice/d6-4.svg";
-import d6Svg5 from "../assets/dice/d6-5.svg";
-import d6Svg6 from "../assets/dice/d6-6.svg";
-import solidD6Svg1 from "../assets/dice/solid-d6-1.svg";
-import solidD6Svg2 from "../assets/dice/solid-d6-2.svg";
-import solidD6Svg3 from "../assets/dice/solid-d6-3.svg";
-import solidD6Svg4 from "../assets/dice/solid-d6-4.svg";
-import solidD6Svg5 from "../assets/dice/solid-d6-5.svg";
-import solidD6Svg6 from "../assets/dice/solid-d6-6.svg";
-
+import { useState } from "react";
 import styled from "styled-components";
 
-export default function DiceBox() {
+export default function DiceBox({ charSkills, handleSkill }) {
+  const [result, setResult] = useState(false);
+  const [diffNum, setDiffNum] = useState(2);
+
+  const handleDifficulty = (value) => {
+    setDiffNum(value);
+  };
+
+  let skillNum = charSkills
+    .filter((skill) => skill.active)
+    .reduce((acc, skill) => acc + skill.rating, 0);
+  if (skillNum > 6) skillNum = 6;
+  else if (skillNum < 0) skillNum = 0;
+
+  const initDice = [];
+  {
+    for (let i = 1; i <= 3; i++) {
+      initDice.push(
+        <Dice
+          key={`initDice${i}`}
+          isSelected={i <= diffNum}
+          onClick={() => handleDifficulty(i)}
+        >
+          ?
+        </Dice>
+      );
+    }
+  }
+
+  const skillDice = [];
+  {
+    for (let i = 1; i <= skillNum; i++) {
+      skillDice.push(
+        <Dice key={`skillDice${i}`} isSelected={true}>
+          ?
+        </Dice>
+      );
+    }
+  }
+
   return (
     <DiceBoxStyled>
       <Header>Dice Box</Header>
-      <DiceRow>
-        <Dice src={d6Svg6} />
-        <Dice src={d6Svg6} />
-        <Dice src={d6Svg6} />
-      </DiceRow>
+      <DiceRow>{initDice}</DiceRow>
+      <hr />
+      <DiceRow>{skillDice}</DiceRow>
     </DiceBoxStyled>
   );
 }
@@ -45,9 +70,22 @@ const DiceRow = styled.div`
   gap: 1em;
 `;
 
-const Dice = styled.img`
+const Dice = styled.div`
+  color: ${(props) =>
+    props.isSelected ? "var(--PRIMARY-TEXT)" : "var(--BG-COLOUR)"};
+  height: 50px;
   width: 50px;
+  border: 2px solid
+    ${(props) =>
+      props.isSelected ? "var(--PRIMARY-TEXT)" : "var(--BG-COLOUR)"};
+  border-radius: 8px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 50px;
   &:hover {
     opacity: 0.6;
   }
 `;
+
+// ? "invert(99%) sepia(1%) saturate(4702%) hue-rotate(36deg) brightness(141%) contrast(80%)"
+//       : "invert(0%) sepia(73%) saturate(146%) hue-rotate(9deg) brightness(101%) contrast(76%)"
