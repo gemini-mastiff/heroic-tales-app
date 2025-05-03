@@ -67,6 +67,7 @@ const DiceRow = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0.75em 0;
   gap: 1em;
 `;
 const Dice = styled.div`
