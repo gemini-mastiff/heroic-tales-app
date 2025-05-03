@@ -1,23 +1,30 @@
 import { useState } from "react";
 import styled from "styled-components";
+import rollCalc from "../js/rollCalc.js";
 import Button from "./Button.jsx";
 
 export default function DiceBox({ skillTotal, resetSkills }) {
-  const [result, setResult] = useState(false);
-  const [diffNum, setDiffNum] = useState(2);
+  const [results, setResults] = useState(false);
+  const [checkNum, setcheckNum] = useState(2);
 
-  const handleDifficulty = (value) => {
-    setDiffNum(value);
+  console.log(results);
+
+  const handlecheckiculty = (value) => {
+    setcheckNum(value);
   };
 
-  const diffDice = [];
+  const handleResults = () => {
+    setResults(rollCalc(checkNum, skillTotal));
+  };
+
+  const checkDice = [];
   {
     for (let i = 1; i <= 3; i++) {
-      diffDice.push(
+      checkDice.push(
         <DiceHover
           key={`initDice${i}`}
-          isSelected={i <= diffNum}
-          onClick={() => handleDifficulty(i)}
+          isSelected={i <= checkNum}
+          onClick={() => handlecheckiculty(i)}
         >
           ?
         </DiceHover>
@@ -39,12 +46,12 @@ export default function DiceBox({ skillTotal, resetSkills }) {
   return (
     <DiceBoxStyled>
       <Header>Dice Box</Header>
-      <DiceRow>{diffDice}</DiceRow>
+      <DiceRow>{checkDice}</DiceRow>
       <hr />
       <DiceRow>{skillDice}</DiceRow>
       <ButtonContainer>
         <Button onClick={() => resetSkills()}>Reset</Button>
-        <Button>Roll</Button>
+        <Button onClick={() => handleResults()}>Roll</Button>
       </ButtonContainer>
     </DiceBoxStyled>
   );
