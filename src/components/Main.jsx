@@ -49,6 +49,7 @@ export default function Main() {
     .reduce((acc, skill) => acc + skill.rating, 0);
 
   const handleSkill = (skill) => {
+    setResults(false);
     setCharArr(
       charArr.map((char) => {
         if (char.name === charArr[currChar].name) {
@@ -64,6 +65,7 @@ export default function Main() {
     );
   };
   const resetSkills = () => {
+    setResults(false);
     setCharArr(
       charArr.map((char) => {
         if (char.name === charArr[currChar].name) {
