@@ -36,13 +36,13 @@ export default function DiceBox({ skillTotal, resetSkills }) {
     {
       for (let i = 0; i < 3; i++) {
         checkDice.push(
-          <DiceHover
+          <CheckDice
             key={`checkDiceResults${i}`}
             isSelected={i < checkResults.length}
             onClick={() => handleDifficulty(i)}
           >
             {i < checkResults.length ? checkResults[i] : "?"}
-          </DiceHover>
+          </CheckDice>
         );
       }
     }
@@ -50,13 +50,13 @@ export default function DiceBox({ skillTotal, resetSkills }) {
     {
       for (let i = 0; i < 3; i++) {
         checkDice.push(
-          <DiceHover
+          <CheckDice
             key={`initDice${i}`}
             isSelected={i <= checkNum}
             onClick={() => handleDifficulty(i)}
           >
             ?
-          </DiceHover>
+          </CheckDice>
         );
       }
     }
@@ -109,7 +109,7 @@ const Dice = styled.div`
   vertical-align: middle;
   line-height: 50px;
 `;
-const DiceHover = styled(Dice)`
+const CheckDice = styled(Dice)`
   &:hover {
     opacity: 0.6;
   }
