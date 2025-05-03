@@ -26,7 +26,10 @@ export default function CharSheet({ char, handleSkill, skillTotal }) {
               <SkillItem key={skill.name}>
                 <button
                   onClick={() => handleSkill(skill)}
-                  disabled={disableSkills && !skill.active}
+                  disabled={
+                    (disableSkills && !skill.active) ||
+                    (skillTotal + skill.rating > 6 && !skill.active)
+                  }
                 >
                   {skill.active ? "-" : "+"}
                 </button>
