@@ -2,16 +2,28 @@ import styled from "styled-components";
 import RollLogItem from "./RollLogItem.jsx";
 
 export default function RollLog({ rollLog }) {
+  const rollLogArr = [];
+  for (let i = 0; i < rollLog.length; i++) {
+    if (i === rollLog.length - 1) {
+      rollLogArr.push(
+        <RollLogItem key={crypto.randomUUID()} roll={rollLog[i]} />
+      );
+    } else {
+      rollLogArr.push(
+        <div>
+          <RollLogItem key={crypto.randomUUID()} roll={rollLog[i]} />
+          <hr />
+        </div>
+      );
+    }
+  }
+
   return (
     <RollLogContainer>
       {rollLog.length < 1 ? (
         "Make some Rolls!"
       ) : (
-        <RollLogStyled>
-          {rollLog.map((roll) => {
-            return <RollLogItem key={crypto.randomUUID()} roll={roll} />;
-          })}
-        </RollLogStyled>
+        <RollLogStyled>{rollLogArr}</RollLogStyled>
       )}
     </RollLogContainer>
   );
