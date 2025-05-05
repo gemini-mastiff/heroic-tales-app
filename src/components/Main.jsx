@@ -44,6 +44,9 @@ export default function Main() {
   const [charArr, setCharArr] = useState(initCharArr);
   const [currChar, setCurrChar] = useState(0);
   const [results, setResults] = useState(false);
+  const [rollLog, setRollLog] = useState([]);
+
+  console.log(rollLog);
 
   const skillTotal = charArr[currChar].skills
     .filter((skill) => skill.active)
@@ -80,14 +83,16 @@ export default function Main() {
     );
   };
   const handleResults = (checkNum) => {
-    setResults(rollCalc(checkNum + 1, skillTotal));
+    const newResults = rollCalc(checkNum + 1, skillTotal);
+    setResults(newResults);
+    setRollLog([...rollLog, newResults]);
   };
 
   return (
     <MainStyled>
       <WidthContainer>
         <GameGrid>
-          <RollLog />
+          <RollLog rollLog={rollLog} />
           <CharSheetContainer>
             <CharSheet
               char={charArr[currChar]}
