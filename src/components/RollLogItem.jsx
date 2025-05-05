@@ -1,9 +1,27 @@
 import styled from "styled-components";
 import React from "react";
 
+function formatResults(arr, target) {
+  return arr.map((result, i, arr) => {
+    return (
+      <React.Fragment key={crypto.randomUUID()}>
+        {result >= target || result === 1 ? (
+          <NumSpan success={result === 1 ? false : true}>{result}</NumSpan>
+        ) : (
+          result
+        )}
+        {arr.length - 1 === i ? null : ", "}
+      </React.Fragment>
+    );
+  });
+}
+
 export default function RollLogItem({ roll }) {
   const checkResults = roll.results.checkResults;
   const skillResults = roll.results.skillResults;
+
+  const checkResultsArr = formatResults(checkResults, 5);
+  const skillResultsArr = formatResults(skillResults, 6);
 
   return (
     <ItemStyled>
@@ -15,22 +33,8 @@ export default function RollLogItem({ roll }) {
           })`}
       </p>
       <p>
-        (
-        {checkResults.map((result, i, arr) => {
-          return (
-            <React.Fragment key={crypto.randomUUID()}>
-              {result >= 5 || result === 1 ? (
-                <NumSpan success={result === 1 ? false : true}>
-                  {result}
-                </NumSpan>
-              ) : (
-                result
-              )}
-              {arr.length - 1 === i ? null : ", "}
-            </React.Fragment>
-          );
-        })}
-        )
+        ({checkResultsArr})
+        {skillResults.length > 0 && <> ({skillResultsArr})</>}
       </p>
     </ItemStyled>
   );
