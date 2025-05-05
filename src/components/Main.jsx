@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import rollCalc from "../js/rollCalc.js";
 import WidthContainer from "./WidthContainer.jsx";
+import RollLog from "./RollLog.jsx";
 import CharSheet from "./CharSheet.jsx";
 import DiceBox from "./DiceBox.jsx";
 
@@ -86,12 +87,7 @@ export default function Main() {
     <MainStyled>
       <WidthContainer>
         <GameGrid>
-          <RollLog>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate
-            tempora consequatur illo cupiditate! Laborum fugit iure, eligendi
-            rem consequuntur enim! Amet assumenda adipisci quam quas
-            consequatur, eaque voluptatem tempora asperiores.
-          </RollLog>
+          <RollLog />
           <CharSheetContainer>
             <CharSheet
               char={charArr[currChar]}
@@ -105,7 +101,7 @@ export default function Main() {
             resetSkills={resetSkills}
             handleResults={handleResults}
             setResults={setResults}
-          ></DiceBox>
+          />
         </GameGrid>
       </WidthContainer>
     </MainStyled>
@@ -124,12 +120,6 @@ const GameGrid = styled.div`
   grid-template-rows: 1fr 1fr;
   padding: 1em 0;
   gap: 1em;
-`;
-
-const RollLog = styled.div`
-  grid-row: 1/3;
-  background-color: var(--MAIN-COLOUR);
-  padding: 0.5em;
 `;
 
 const CharSheetContainer = styled.div`
