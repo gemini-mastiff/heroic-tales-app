@@ -11,8 +11,6 @@ export default function DiceBox({
 }) {
   const [checkNum, setCheckNum] = useState(1);
 
-  console.log(results);
-
   const handleDifficulty = (value) => {
     setResults(false);
     setCheckNum(value);
