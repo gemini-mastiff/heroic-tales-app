@@ -30,7 +30,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-family: 'DM Sans', sans-serif;
     line-height: 1.5;
     color: var(--PRIMARY-TEXT);
