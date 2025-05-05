@@ -73,9 +73,12 @@ export default function DiceBox({
       <DiceRow>{skillDice.length > 0 ? skillDice : "Add some skills!"}</DiceRow>
       {results && (
         <SuccessDisplay>
-          <p>{results.successLevel}</p>
+          <SuccessTitle>{results.successLevel}</SuccessTitle>
           {results.successNum > 0 && (
-            <p>{results.successNum} levels of success</p>
+            <SuccessText>
+              {results.successNum} {results.successNum > 1 ? "levels" : "level"}{" "}
+              of success
+            </SuccessText>
           )}
         </SuccessDisplay>
       )}
@@ -128,6 +131,18 @@ const CheckDice = styled(Dice)`
 
 const SuccessDisplay = styled.div`
   text-align: center;
+`;
+
+const SuccessTitle = styled.p`
+  font-family: "Spectral SC", serif;
+  font-size: 1.75rem;
+  font-weight: bold;
+`;
+
+const SuccessText = styled.p`
+  font-size: 1.2rem;
+  font-style: italic;
+  margin-top: -0.5em;
 `;
 
 const ButtonContainer = styled.div`
