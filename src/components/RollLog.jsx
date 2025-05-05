@@ -10,7 +10,7 @@ export default function RollLog({ rollLog }) {
       );
     } else {
       rollLogArr.push(
-        <div>
+        <div key={crypto.randomUUID()}>
           <RollLogItem key={crypto.randomUUID()} roll={rollLog[i]} />
           <hr />
         </div>
