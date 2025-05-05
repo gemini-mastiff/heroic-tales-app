@@ -21,44 +21,48 @@ export default function DiceBox({
   const checkDice = [];
 
   const skillDice = [];
-  {
+
+  if (results) {
+    const checkResults = results.results.checkResults;
+    const skillResults = results.results.skillResults;
+    for (let i = 0; i < 3; i++) {
+      checkDice.push(
+        <CheckDice
+          key={`checkDiceResults${i}`}
+          isSelected={i < checkResults.length}
+          onClick={() => handleDifficulty(i)}
+        >
+          {i < checkResults.length ? checkResults[i] : "?"}
+        </CheckDice>
+      );
+    }
+
+    for (let i = 0; i < skillResults.length; i++) {
+      skillDice.push(
+        <Dice key={`skillDiceResults${i}`} isSelected={true}>
+          {skillResults[i]}
+        </Dice>
+      );
+    }
+  } else {
+    for (let i = 0; i < 3; i++) {
+      checkDice.push(
+        <CheckDice
+          key={`initDice${i}`}
+          isSelected={i <= checkNum}
+          onClick={() => handleDifficulty(i)}
+        >
+          ?
+        </CheckDice>
+      );
+    }
+
     for (let i = 1; i <= skillTotal; i++) {
       skillDice.push(
         <Dice key={`skillDice${i}`} isSelected={true}>
           ?
         </Dice>
       );
-    }
-  }
-
-  if (results) {
-    const checkResults = results.results.checkResults;
-    {
-      for (let i = 0; i < 3; i++) {
-        checkDice.push(
-          <CheckDice
-            key={`checkDiceResults${i}`}
-            isSelected={i < checkResults.length}
-            onClick={() => handleDifficulty(i)}
-          >
-            {i < checkResults.length ? checkResults[i] : "?"}
-          </CheckDice>
-        );
-      }
-    }
-  } else {
-    {
-      for (let i = 0; i < 3; i++) {
-        checkDice.push(
-          <CheckDice
-            key={`initDice${i}`}
-            isSelected={i <= checkNum}
-            onClick={() => handleDifficulty(i)}
-          >
-            ?
-          </CheckDice>
-        );
-      }
     }
   }
 
