@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import RollLogItem from "./RollLogItem.jsx";
 
 export default function RollLog({ rollLog }) {
   return (
@@ -8,22 +9,7 @@ export default function RollLog({ rollLog }) {
       ) : (
         <RollLogStyled>
           {rollLog.map((roll) => {
-            return (
-              <div key={crypto.randomUUID()}>
-                <p>
-                  {roll.successLevel}{" "}
-                  {roll.successNum > 0 &&
-                    `(${roll.successNum} ${
-                      roll.successNum > 1 ? "successes" : "success"
-                    })`}
-                </p>
-                <p>
-                  {`(${roll.results.checkResults})`}{" "}
-                  {roll.results.skillResults.length > 0 &&
-                    `(${roll.results.skillResults})`}
-                </p>
-              </div>
-            );
+            return <RollLogItem key={crypto.randomUUID()} roll={roll} />;
           })}
         </RollLogStyled>
       )}
