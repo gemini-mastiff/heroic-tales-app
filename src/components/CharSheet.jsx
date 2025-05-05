@@ -23,7 +23,7 @@ export default function CharSheet({ char, handleSkill, skillTotal }) {
           <CharHeading>Skills</CharHeading>
           <SkillList>
             {char.skills.map((skill) => (
-              <SkillItem key={skill.name}>
+              <SkillItem key={crypto.randomUUID()}>
                 <button
                   onClick={() => handleSkill(skill)}
                   disabled={
@@ -44,7 +44,7 @@ export default function CharSheet({ char, handleSkill, skillTotal }) {
           {char.abilities.length > 0 ? (
             <ul>
               {char.abilities.map((ability) => (
-                <li>{ability}</li>
+                <li key={crypto.randomUUID()}>{ability}</li>
               ))}
             </ul>
           ) : (

@@ -25,7 +25,7 @@ export default function DiceBox({
     for (let i = 0; i < 3; i++) {
       checkDice.push(
         <CheckDice
-          key={`checkDiceResults${i}`}
+          key={crypto.randomUUID()}
           isSelected={i < checkResults.length}
           onClick={() => handleDifficulty(i)}
         >
@@ -36,7 +36,7 @@ export default function DiceBox({
 
     for (let i = 0; i < skillResults.length; i++) {
       skillDice.push(
-        <Dice key={`skillDiceResults${i}`} isSelected={true}>
+        <Dice key={crypto.randomUUID()} isSelected={true}>
           {skillResults[i]}
         </Dice>
       );
@@ -45,7 +45,7 @@ export default function DiceBox({
     for (let i = 0; i < 3; i++) {
       checkDice.push(
         <CheckDice
-          key={`initDice${i}`}
+          key={crypto.randomUUID()}
           isSelected={i <= checkNum}
           onClick={() => handleDifficulty(i)}
         >
@@ -56,7 +56,7 @@ export default function DiceBox({
 
     for (let i = 1; i <= skillTotal; i++) {
       skillDice.push(
-        <Dice key={`skillDice${i}`} isSelected={true}>
+        <Dice key={crypto.randomUUID()} isSelected={true}>
           ?
         </Dice>
       );
