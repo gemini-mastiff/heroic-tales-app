@@ -19,7 +19,6 @@ export default function DiceBox({
   };
 
   const checkDice = [];
-
   const skillDice = [];
 
   if (results) {
@@ -72,6 +71,14 @@ export default function DiceBox({
       <DiceRow>{checkDice}</DiceRow>
       <hr />
       <DiceRow>{skillDice.length > 0 ? skillDice : "Add some skills!"}</DiceRow>
+      {results && (
+        <SuccessDisplay>
+          <p>{results.successLevel}</p>
+          {results.successNum > 0 && (
+            <p>{results.successNum} levels of success</p>
+          )}
+        </SuccessDisplay>
+      )}
       <ButtonContainer>
         <Button onClick={() => resetSkills()}>Reset</Button>
         <Button onClick={() => handleResults(checkNum)}>Roll</Button>
@@ -117,6 +124,10 @@ const CheckDice = styled(Dice)`
   &:hover {
     opacity: 0.6;
   }
+`;
+
+const SuccessDisplay = styled.div`
+  text-align: center;
 `;
 
 const ButtonContainer = styled.div`
