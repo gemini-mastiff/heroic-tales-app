@@ -6,7 +6,7 @@ function formatResults(arr, target) {
     return (
       <React.Fragment key={crypto.randomUUID()}>
         {result >= target || result === 1 ? (
-          <NumSpan success={result === 1 ? false : true}>{result}</NumSpan>
+          <NumSpan $success={result === 1 ? false : true}>{result}</NumSpan>
         ) : (
           result
         )}
@@ -49,5 +49,5 @@ const SuccessLevel = styled.span`
 `;
 
 const NumSpan = styled.span`
-  color: ${(props) => (props.success === true ? "green" : "red")};
+  color: ${(props) => (props.$success === true ? "green" : "red")};
 `;

@@ -26,7 +26,7 @@ export default function DiceBox({
       checkDice.push(
         <CheckDice
           key={crypto.randomUUID()}
-          isSelected={i < checkResults.length}
+          $isSelected={i < checkResults.length}
           onClick={() => handleDifficulty(i)}
         >
           {i < checkResults.length ? checkResults[i] : "?"}
@@ -36,7 +36,7 @@ export default function DiceBox({
 
     for (let i = 0; i < skillResults.length; i++) {
       skillDice.push(
-        <Dice key={crypto.randomUUID()} isSelected={true}>
+        <Dice key={crypto.randomUUID()} $isSelected={true}>
           {skillResults[i]}
         </Dice>
       );
@@ -46,7 +46,7 @@ export default function DiceBox({
       checkDice.push(
         <CheckDice
           key={crypto.randomUUID()}
-          isSelected={i <= checkNum}
+          $isSelected={i <= checkNum}
           onClick={() => handleDifficulty(i)}
         >
           ?
@@ -56,7 +56,7 @@ export default function DiceBox({
 
     for (let i = 1; i <= skillTotal; i++) {
       skillDice.push(
-        <Dice key={crypto.randomUUID()} isSelected={true}>
+        <Dice key={crypto.randomUUID()} $isSelected={true}>
           ?
         </Dice>
       );
@@ -110,12 +110,12 @@ const DiceRow = styled.div`
 `;
 const Dice = styled.div`
   color: ${(props) =>
-    props.isSelected ? "var(--PRIMARY-TEXT)" : "var(--BG-COLOUR)"};
+    props.$isSelected ? "var(--PRIMARY-TEXT)" : "var(--BG-COLOUR)"};
   height: 50px;
   width: 50px;
   border: 2px solid
     ${(props) =>
-      props.isSelected ? "var(--PRIMARY-TEXT)" : "var(--BG-COLOUR)"};
+      props.$isSelected ? "var(--PRIMARY-TEXT)" : "var(--BG-COLOUR)"};
   border-radius: 8px;
   text-align: center;
   vertical-align: middle;
