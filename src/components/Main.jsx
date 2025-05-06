@@ -5,6 +5,7 @@ import WidthContainer from "./WidthContainer.jsx";
 import RollLog from "./RollLog.jsx";
 import CharSheet from "./CharSheet.jsx";
 import DiceBox from "./DiceBox.jsx";
+import DialogModal from "./DialogModal.jsx";
 
 const initCharArr = [
   {
@@ -43,6 +44,7 @@ const initCharArr = [
 export default function Main() {
   const [charArr, setCharArr] = useState(initCharArr);
   const [currChar, setCurrChar] = useState(0);
+  const [editChar, setEditChar] = useState(false);
   const [results, setResults] = useState(false);
   const [rollLog, setRollLog] = useState([]);
 
@@ -98,6 +100,7 @@ export default function Main() {
               char={charArr[currChar]}
               handleSkill={handleSkill}
               skillTotal={skillTotal}
+              setEditChar={setEditChar}
             />
           </CharSheetContainer>
           <DiceBox
@@ -108,6 +111,7 @@ export default function Main() {
             setResults={setResults}
           />
         </GameGrid>
+        <DialogModal isOpen={editChar} onClose={setEditChar} />
       </WidthContainer>
     </MainStyled>
   );

@@ -6,7 +6,12 @@ import injurySvg from "../assets/injury.svg";
 import shieldSvg from "../assets/shield.svg";
 import magicSvg from "../assets/magic.svg";
 
-export default function CharSheet({ char, handleSkill, skillTotal }) {
+export default function CharSheet({
+  char,
+  handleSkill,
+  skillTotal,
+  setEditChar,
+}) {
   const disableSkills = skillTotal >= 6;
 
   return (
@@ -15,6 +20,7 @@ export default function CharSheet({ char, handleSkill, skillTotal }) {
         <div>
           <CharName>{char.name}</CharName>
           <CharRole>{`${char.race} ${char.class} (${char.subclass})`}</CharRole>
+          <button onClick={() => setEditChar(true)}>Edit</button>
         </div>
         <CharImg src={char.img ? char.img : noImgSvg} alt="" />
       </CharHeader>
