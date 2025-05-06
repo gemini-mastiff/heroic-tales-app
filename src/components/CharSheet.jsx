@@ -19,7 +19,7 @@ export default function CharSheet({
       <CharHeader>
         <div>
           <CharName>{char.name}</CharName>
-          <CharRole>{`${char.race} ${char.class} (${char.subclass})`}</CharRole>
+          <CharHeading>{`${char.race} ${char.class} (${char.subclass})`}</CharHeading>
           <button onClick={() => setEditChar(true)}>Edit</button>
         </div>
         <CharImg src={char.img ? char.img : noImgSvg} alt="" />
@@ -121,11 +121,6 @@ const CharName = styled.h2`
   text-decoration: underline;
 `;
 
-const CharRole = styled.p`
-  font-family: "Spectral SC", serif;
-  font-size: 1.25rem;
-`;
-
 const CharImg = styled.img`
   height: 120px;
   border: 4px solid var(--BG-COLOUR);
@@ -139,6 +134,7 @@ const CharStats = styled.div`
 
 const CharHeading = styled.h3`
   font-family: "Spectral SC", serif;
+  font-size: 1.4rem;
 `;
 
 const CharSkills = styled.div`
