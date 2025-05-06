@@ -48,8 +48,6 @@ export default function Main() {
   const [results, setResults] = useState(false);
   const [rollLog, setRollLog] = useState([]);
 
-  console.log(rollLog);
-
   const skillTotal = charArr[currChar].skills
     .filter((skill) => skill.active)
     .reduce((acc, skill) => acc + skill.rating, 0);
