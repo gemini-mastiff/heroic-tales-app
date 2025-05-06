@@ -34,8 +34,8 @@ const initCharArr = [
       armour: 0,
       cast: 0,
     },
-    desc: null,
-    inventory: [],
+    desc: "A hunter from the deadly forests, looking for revenge against his evil brother.",
+    inventory: ["Bow", "Quiver of Arrows", "Hunting Knife"],
     img: null,
   },
 ];
