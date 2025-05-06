@@ -26,17 +26,11 @@ export default function RollLog({ rollLog }) {
 
 const RollLogContainer = styled.div`
   flex: 1;
+  max-height: 100%;
   background-color: var(--MAIN-COLOUR);
   display: flex;
   flex-direction: column;
-  justify-content: end;
-  padding: 0.5em;
-`;
-
-const RollLogStyled = styled.div`
-  height: 100%;
-  display: flex;
-  flex-direction: column;
   justify-content: flex-end;
-  overflow-y: auto;
+  padding: 0.5em;
+  overflow: auto;
 `;

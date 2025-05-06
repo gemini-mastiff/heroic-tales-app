@@ -97,21 +97,23 @@ export default function Main() {
       <WidthContainer>
         <GameGrid>
           <RollLog rollLog={rollLog} />
-          <CharSheetContainer>
-            <CharSheet
-              char={charArr[currChar]}
-              handleSkill={handleSkill}
+          <CharDiceContainer>
+            <CharSheetContainer>
+              <CharSheet
+                char={charArr[currChar]}
+                handleSkill={handleSkill}
+                skillTotal={skillTotal}
+                setEditChar={setEditChar}
+              />
+            </CharSheetContainer>
+            <DiceBox
               skillTotal={skillTotal}
-              setEditChar={setEditChar}
+              results={results}
+              resetSkills={resetSkills}
+              handleResults={handleResults}
+              setResults={setResults}
             />
-          </CharSheetContainer>
-          <DiceBox
-            skillTotal={skillTotal}
-            results={results}
-            resetSkills={resetSkills}
-            handleResults={handleResults}
-            setResults={setResults}
-          />
+          </CharDiceContainer>
         </GameGrid>
         <DialogModal isOpen={editChar} onClose={setEditChar}>
           <form action=""></form>
@@ -123,15 +125,21 @@ export default function Main() {
 
 const MainStyled = styled.main`
   background-color: var(--BG-COLOUR);
-  display: flex;
 `;
 
 const GameGrid = styled.div`
-  height: 100%;
-  display: grid;
-  grid-template-columns: 2fr 3fr;
-  grid-template-rows: 1fr 1fr;
+  max-height: 955px;
+  display: flex;
+  align-items: stretch;
   padding: 1em 0;
+  gap: 1em;
+  margin: auto;
+`;
+
+const CharDiceContainer = styled.div`
+  flex: 2;
+  display: flex;
+  flex-direction: column;
   gap: 1em;
 `;
 
