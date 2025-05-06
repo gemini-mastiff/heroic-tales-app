@@ -69,17 +69,16 @@ export default function DiceBox({
       <DiceRow>{checkDice}</DiceRow>
       <hr />
       <DiceRow>{skillDice.length > 0 ? skillDice : "Add some skills!"}</DiceRow>
-      {results && (
-        <SuccessDisplay>
-          <SuccessTitle>{results.successLevel}</SuccessTitle>
-          {results.successNum > 0 && (
-            <SuccessText>
-              {results.successNum} {results.successNum > 1 ? "levels" : "level"}{" "}
-              of success
-            </SuccessText>
-          )}
-        </SuccessDisplay>
-      )}
+
+      <SuccessDisplay>
+        <SuccessTitle>{results.successLevel}</SuccessTitle>
+        {results.successNum > 0 && (
+          <SuccessText>
+            {results.successNum} {results.successNum > 1 ? "levels" : "level"}{" "}
+            of success
+          </SuccessText>
+        )}
+      </SuccessDisplay>
       <ButtonContainer>
         <Button onClick={() => resetSkills()}>Reset</Button>
         <Button onClick={() => handleResults(checkNum)}>Roll</Button>
@@ -128,6 +127,7 @@ const CheckDice = styled(Dice)`
 `;
 
 const SuccessDisplay = styled.div`
+  height: 60px;
   text-align: center;
 `;
 
