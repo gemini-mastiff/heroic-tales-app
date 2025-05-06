@@ -81,14 +81,16 @@ export default function CharSheet({ char, handleSkill, skillTotal }) {
             <p>{char.desc}</p>
           </CharDesc>
         )}
-        <CharInv>
-          <CharHeading>Inventory</CharHeading>
-          <ul>
-            {char.inventory.map((item) => {
-              return <li>{item}</li>;
-            })}
-          </ul>
-        </CharInv>
+        {char.inventory.length > 0 && (
+          <CharInv>
+            <CharHeading>Inventory</CharHeading>
+            <InvList>
+              {char.inventory.map((item) => {
+                return <InvItem>{item}</InvItem>;
+              })}
+            </InvList>
+          </CharInv>
+        )}
       </CharInfo>
     </CharSheetStyled>
   );
@@ -97,6 +99,7 @@ export default function CharSheet({ char, handleSkill, skillTotal }) {
 const CharSheetStyled = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 1em;
 `;
 
 const CharHeader = styled.div`
@@ -162,8 +165,17 @@ const NumIcon = styled.img`
   width: 30px;
 `;
 
-const CharInfo = styled.div``;
+const CharInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+`;
 
 const CharDesc = styled.div``;
 
 const CharInv = styled.div``;
+const InvList = styled.ul`
+  list-style: inside square;
+  margin: 0;
+`;
+const InvItem = styled.li``;
