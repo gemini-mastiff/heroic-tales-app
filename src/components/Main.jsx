@@ -86,8 +86,12 @@ export default function Main() {
   };
   const handleResults = (checkNum) => {
     const newResults = rollCalc(checkNum + 1, skillTotal);
+    let newRollLog;
+    if (rollLog.length >= 20) {
+      newRollLog = rollLog.slice(1);
+    } else newRollLog = rollLog;
     setResults(newResults);
-    setRollLog([...rollLog, newResults]);
+    setRollLog([...newRollLog, newResults]);
   };
 
   return (
@@ -111,7 +115,9 @@ export default function Main() {
             setResults={setResults}
           />
         </GameGrid>
-        <DialogModal isOpen={editChar} onClose={setEditChar} />
+        <DialogModal isOpen={editChar} onClose={setEditChar}>
+          <form action=""></form>
+        </DialogModal>
       </WidthContainer>
     </MainStyled>
   );
