@@ -92,7 +92,7 @@ export default function CharSheet({
             <CharHeading>Inventory</CharHeading>
             <InvList>
               {char.inventory.map((item) => {
-                return <InvItem>{item}</InvItem>;
+                return <InvItem key={crypto.randomUUID()}>{item}</InvItem>;
               })}
             </InvList>
           </CharInv>
