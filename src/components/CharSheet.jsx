@@ -74,6 +74,22 @@ export default function CharSheet({ char, handleSkill, skillTotal }) {
           </CharNumRow>
         </CharNums>
       </CharStats>
+      <CharInfo>
+        {char.desc && (
+          <CharDesc>
+            <CharHeading>Description</CharHeading>
+            <p>{char.desc}</p>
+          </CharDesc>
+        )}
+        <CharInv>
+          <CharHeading>Inventory</CharHeading>
+          <ul>
+            {char.inventory.map((item) => {
+              return <li>{item}</li>;
+            })}
+          </ul>
+        </CharInv>
+      </CharInfo>
     </CharSheetStyled>
   );
 }
@@ -145,3 +161,9 @@ const CharNumRow = styled.div`
 const NumIcon = styled.img`
   width: 30px;
 `;
+
+const CharInfo = styled.div``;
+
+const CharDesc = styled.div``;
+
+const CharInv = styled.div``;
