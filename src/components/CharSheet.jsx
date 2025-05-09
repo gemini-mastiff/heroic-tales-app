@@ -50,7 +50,7 @@ export default function CharSheet({
           {char.abilities.length > 0 ? (
             <ul>
               {char.abilities.map((ability) => (
-                <li key={crypto.randomUUID()}>{ability}</li>
+                <li key={crypto.randomUUID()}>{ability.name}</li>
               ))}
             </ul>
           ) : (
