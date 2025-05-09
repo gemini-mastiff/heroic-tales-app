@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import TextInput from "./TextInput.jsx";
 import { useState } from "react";
+import TextInput from "./TextInput.jsx";
+import FormArr from "./FormArr.jsx";
 
 export default function EditCharForm({ char, onSubmit }) {
   const [charDetails, setCharDetails] = useState({ ...char });
@@ -42,7 +43,16 @@ export default function EditCharForm({ char, onSubmit }) {
           setCharDetails({ ...charDetails, sublass: e.target.value })
         }
       />
+      <FormArr name="Skills">
+        {char.skills.map((skill) => {
+          return <SkillItem skill={skill} />;
+        })}
+      </FormArr>
       <input type="submit" />
     </form>
   );
+}
+
+function SkillItem({ skill, onChange }) {
+  return <div className="char_skill">{skill.name}</div>;
 }
