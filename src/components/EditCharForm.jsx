@@ -13,6 +13,16 @@ export default function EditCharForm({ char, onSubmit }) {
     onSubmit(charDetails);
   };
 
+  const handleSkillName = (value, id) => {
+    const newSkills = charDetails.skills.map((skill) => {
+      if (id === skill.id) {
+        skill.name = value;
+        return skill;
+      } else return skill;
+    });
+    setCharDetails({ ...charDetails, skills: newSkills });
+  };
+
   return (
     <form action="" onSubmit={(e) => handleSubmit(e)}>
       <TextInput
@@ -45,7 +55,20 @@ export default function EditCharForm({ char, onSubmit }) {
       />
       <FormArr name="Skills">
         {char.skills.map((skill) => {
-          return <SkillItem skill={skill} />;
+          return (
+            <SkillItem key={skill.id}>
+              <EditableText
+                value={skill.name}
+                onChange={(value) => handleSkillName(value, skill.id)}
+              />
+              <RatingContainer>
+                <button>-</button>
+                <p>{skill.rating}</p>
+                <button>+</button>
+              </RatingContainer>
+              <button>Del</button>
+            </SkillItem>
+          );
         })}
       </FormArr>
       <input type="submit" />
@@ -53,21 +76,25 @@ export default function EditCharForm({ char, onSubmit }) {
   );
 }
 
-function SkillItem({ skill, onChange }) {
+function EditableText({ value, onChange }) {
+  const [isEdit, setIsEdit] = useState(false);
+
   return (
-    <SkillItemStyled>
-      <p>{skill.name}</p>
-      <RatingContainer>
-        <button>-</button>
-        <p>{skill.rating}</p>
-        <button>+</button>
-      </RatingContainer>
-      <button>Del</button>
-    </SkillItemStyled>
+    <>
+      {isEdit ? (
+        <input
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          onBlur={() => setIsEdit(false)}
+        />
+      ) : (
+        <p onClick={() => setIsEdit(true)}>{value}</p>
+      )}
+    </>
   );
 }
 
-const SkillItemStyled = styled.div`
+const SkillItem = styled.div`
   display: grid;
   grid-template-columns: 1fr auto 40px;
 `;
