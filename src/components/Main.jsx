@@ -10,23 +10,26 @@ import EditCharForm from "./EditCharForm.jsx";
 
 const initCharArr = [
   {
+    id: 0,
     name: "Sir Tomwell",
     race: "Human",
     class: "Ranger",
     subclass: "Hunter",
     skills: [
-      { name: "Shooting", rating: 2, active: false },
+      { id: 0, name: "Shooting", rating: 2, active: false },
       {
+        id: 1,
         name: "Tracking",
         rating: 3,
         active: false,
       },
       {
+        id: 2,
         name: "Traps",
         rating: 1,
         active: false,
       },
-      { name: "Survival", rating: 1, active: false },
+      { id: 3, name: "Survival", rating: 1, active: false },
     ],
     abilities: [],
     stats: {
