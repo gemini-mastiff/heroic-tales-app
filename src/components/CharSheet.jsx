@@ -142,7 +142,7 @@ const CharSkills = styled.div`
   background-color: var(--MAIN-COLOUR);
 `;
 
-const SkillList = styled.ul`
+const List = styled.ul`
   list-style: none;
 `;
 
