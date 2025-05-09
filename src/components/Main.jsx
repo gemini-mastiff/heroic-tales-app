@@ -6,6 +6,7 @@ import RollLog from "./RollLog.jsx";
 import CharSheet from "./CharSheet.jsx";
 import DiceBox from "./DiceBox.jsx";
 import DialogModal from "./DialogModal.jsx";
+import EditCharForm from "./EditCharForm.jsx";
 
 const initCharArr = [
   {
@@ -91,6 +92,18 @@ export default function Main() {
     setResults(newResults);
     setRollLog([...newRollLog, newResults]);
   };
+  const handleCharEdit = (newCharDetails) => {
+    setCharArr(
+      charArr.map((char, i) => {
+        if (i === currChar) {
+          return newCharDetails;
+        }
+      })
+    );
+    setEditChar(false);
+  };
+
+  console.log(charArr);
 
   return (
     <MainStyled>
@@ -116,7 +129,7 @@ export default function Main() {
           </CharDiceContainer>
         </GameGrid>
         <DialogModal isOpen={editChar} onClose={setEditChar}>
-          <form action=""></form>
+          <EditCharForm char={charArr[currChar]} onSubmit={handleCharEdit} />
         </DialogModal>
       </WidthContainer>
     </MainStyled>
