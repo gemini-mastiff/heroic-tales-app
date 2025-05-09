@@ -54,5 +54,25 @@ export default function EditCharForm({ char, onSubmit }) {
 }
 
 function SkillItem({ skill, onChange }) {
-  return <div className="char_skill">{skill.name}</div>;
+  return (
+    <SkillItemStyled>
+      <p>{skill.name}</p>
+      <RatingContainer>
+        <button>-</button>
+        <p>{skill.rating}</p>
+        <button>+</button>
+      </RatingContainer>
+      <button>Del</button>
+    </SkillItemStyled>
+  );
 }
+
+const SkillItemStyled = styled.div`
+  display: grid;
+  grid-template-columns: 1fr auto 40px;
+`;
+
+const RatingContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+`;
