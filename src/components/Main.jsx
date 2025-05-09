@@ -31,7 +31,13 @@ const initCharArr = [
       },
       { id: 3, name: "Survival", rating: 1, active: false },
     ],
-    abilities: [],
+    abilities: [
+      {
+        id: 0,
+        name: "Adaptive",
+        desc: "Humans have 1 extra thing they're good at!",
+      },
+    ],
     stats: {
       hits: 0,
       health: 5,
