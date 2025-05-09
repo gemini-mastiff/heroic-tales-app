@@ -20,7 +20,29 @@ export default function EditCharForm({ char, onSubmit }) {
         onChange={(e) =>
           setCharDetails({ ...charDetails, name: e.target.value })
         }
-      ></TextInput>
+      />
+      <TextInput
+        name="Race"
+        value={charDetails.race}
+        onChange={(e) =>
+          setCharDetails({ ...charDetails, race: e.target.value })
+        }
+      />
+      <TextInput
+        name="Class"
+        value={charDetails.class}
+        onChange={(e) =>
+          setCharDetails({ ...charDetails, class: e.target.value })
+        }
+      />
+      <TextInput
+        name="Sublass"
+        value={charDetails.subclass}
+        onChange={(e) =>
+          setCharDetails({ ...charDetails, sublass: e.target.value })
+        }
+      />
+      <input type="submit" />
     </form>
   );
 }
