@@ -32,6 +32,11 @@ export default function EditCharForm({ char, onSubmit }) {
     });
     setCharDetails({ ...charDetails, skills: newSkills });
   };
+  const handelSkillDel = (e, id) => {
+    e.preventDefault();
+    const newSkills = charDetails.skills.filter((skill) => skill.id !== id);
+    setCharDetails({ ...charDetails, skills: newSkills });
+  };
 
   return (
     <form action="" onSubmit={(e) => handleSubmit(e)}>
@@ -64,7 +69,7 @@ export default function EditCharForm({ char, onSubmit }) {
         }
       />
       <FormArr name="Skills">
-        {char.skills.map((skill) => {
+        {charDetails.skills.map((skill) => {
           return (
             <SkillItem key={skill.id}>
               <EditableText
@@ -90,7 +95,7 @@ export default function EditCharForm({ char, onSubmit }) {
                   +
                 </button>
               </RatingContainer>
-              <button>Del</button>
+              <button onClick={(e) => handelSkillDel(e, skill.id)}>Del</button>
             </SkillItem>
           );
         })}
@@ -103,6 +108,12 @@ export default function EditCharForm({ char, onSubmit }) {
 function EditableText({ value, onChange }) {
   const [isEdit, setIsEdit] = useState(false);
 
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      setIsEdit(false);
+    }
+  };
+
   return (
     <>
       {isEdit ? (
@@ -111,6 +122,7 @@ function EditableText({ value, onChange }) {
           value={value}
           onChange={(e) => onChange(e.target.value)}
           onBlur={() => setIsEdit(false)}
+          onKeyDown={(e) => handleKeyPress(e)}
         />
       ) : (
         <p onClick={() => setIsEdit(true)}>{value}</p>
