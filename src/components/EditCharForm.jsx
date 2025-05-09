@@ -62,7 +62,7 @@ export default function EditCharForm({ char, onSubmit }) {
         }
       />
       <TextInput
-        name="Sublass"
+        name="Subclass"
         value={charDetails.subclass}
         onChange={(e) =>
           setCharDetails({ ...charDetails, sublass: e.target.value })
