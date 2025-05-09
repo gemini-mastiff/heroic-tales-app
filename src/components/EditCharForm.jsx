@@ -83,6 +83,7 @@ function EditableText({ value, onChange }) {
     <>
       {isEdit ? (
         <input
+          autoFocus
           value={value}
           onChange={(e) => onChange(e.target.value)}
           onBlur={() => setIsEdit(false)}
