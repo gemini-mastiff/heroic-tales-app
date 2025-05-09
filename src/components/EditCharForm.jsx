@@ -22,6 +22,16 @@ export default function EditCharForm({ char, onSubmit }) {
     });
     setCharDetails({ ...charDetails, skills: newSkills });
   };
+  const handleSkillRating = (e, newRating, id) => {
+    e.preventDefault();
+    const newSkills = charDetails.skills.map((skill) => {
+      if (skill.id === id) {
+        skill.rating = newRating;
+        return skill;
+      } else return skill;
+    });
+    setCharDetails({ ...charDetails, skills: newSkills });
+  };
 
   return (
     <form action="" onSubmit={(e) => handleSubmit(e)}>
@@ -62,9 +72,23 @@ export default function EditCharForm({ char, onSubmit }) {
                 onChange={(value) => handleSkillName(value, skill.id)}
               />
               <RatingContainer>
-                <button>-</button>
+                <button
+                  disabled={skill.rating <= 1}
+                  onClick={(e) =>
+                    handleSkillRating(e, skill.rating - 1, skill.id)
+                  }
+                >
+                  -
+                </button>
                 <p>{skill.rating}</p>
-                <button>+</button>
+                <button
+                  disabled={skill.rating >= 3}
+                  onClick={(e) =>
+                    handleSkillRating(e, skill.rating + 1, skill.id)
+                  }
+                >
+                  +
+                </button>
               </RatingContainer>
               <button>Del</button>
             </SkillItem>
