@@ -63,6 +63,13 @@ export default function EditCharForm({ char, onSubmit }) {
     });
     setCharDetails({ ...charDetails, abilities: newAbilities });
   };
+  const handleAbilityDel = (e, id) => {
+    e.preventDefault();
+    const newAbilities = charDetails.abilities.filter(
+      (ability) => ability.id !== id
+    );
+    setCharDetails({ ...charDetails, abilities: newAbilities });
+  };
 
   return (
     <form action="" onSubmit={(e) => handleSubmit(e)}>
@@ -135,6 +142,7 @@ export default function EditCharForm({ char, onSubmit }) {
               ability={ability}
               onNameChange={handleAbilityName}
               onDescChange={handleAbilityDesc}
+              onDel={handleAbilityDel}
             />
           );
         })}
@@ -170,7 +178,7 @@ function EditableText({ value, onChange }) {
   );
 }
 
-function AbilityItem({ ability, onNameChange, onDescChange }) {
+function AbilityItem({ ability, onNameChange, onDescChange, onDel }) {
   const [isEdit, setIsEdit] = useState(false);
 
   const handleEdit = (e) => {
@@ -193,7 +201,7 @@ function AbilityItem({ ability, onNameChange, onDescChange }) {
         <button onClick={(e) => handleEdit(e)}>
           {isEdit ? "Save" : "Edit"}
         </button>
-        <button>Del</button>
+        <button onClick={(e) => onDel(e, ability.id)}>Del</button>
       </AbilityHeader>
       {isEdit ? (
         <textarea
