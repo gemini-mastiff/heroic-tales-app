@@ -16,7 +16,7 @@ export default function EditCharForm({ char, onSubmit }) {
   const handleNewSkill = (e) => {
     e.preventDefault();
     const newSkills = charDetails.skills;
-    const newId = charDetails.skills[charDetails.skills.length - 1].id + 1;
+    const newId = newSkills[newSkills.length - 1].id + 1;
     newSkills.push({ id: newId, name: "New Skill", rating: 1, active: false });
     setCharDetails({ ...charDetails, skills: newSkills });
   };
