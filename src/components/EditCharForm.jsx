@@ -45,6 +45,16 @@ export default function EditCharForm({ char, onSubmit }) {
     setCharDetails({ ...charDetails, skills: newSkills });
   };
 
+  const handleAbilityName = (value, id) => {
+    const newAbilities = charDetails.abilities.map((ability) => {
+      if (ability.id === id) {
+        ability.name = value;
+        return ability;
+      }
+    });
+    setCharDetails({ ...charDetails, abilities: newAbilities });
+  };
+
   return (
     <form action="" onSubmit={(e) => handleSubmit(e)}>
       <TextInput
@@ -111,9 +121,11 @@ export default function EditCharForm({ char, onSubmit }) {
       <FormArr name="Abilities">
         {charDetails.abilities.map((ability) => {
           return (
-            <div>
-              {ability.name} - {ability.desc}
-            </div>
+            <AbilityItem
+              key={ability.id}
+              ability={ability}
+              onNameChange={handleAbilityName}
+            />
           );
         })}
       </FormArr>
@@ -148,6 +160,43 @@ function EditableText({ value, onChange }) {
   );
 }
 
+function AbilityItem({ ability, onNameChange, handleAbilityDesc }) {
+  const [isEdit, setIsEdit] = useState(false);
+
+  const handleEdit = (e) => {
+    e.preventDefault();
+    setIsEdit(!isEdit);
+  };
+
+  if (isEdit) {
+    return (
+      <div>
+        <AbilityHeader>
+          <input
+            type="text"
+            value={ability.name}
+            onChange={(e) => onNameChange(e.target.value, ability.id)}
+          />
+          <button onClick={(e) => handleEdit(e)}>Save</button>
+          <button>Del</button>
+        </AbilityHeader>
+        <p>{ability.desc}</p>
+      </div>
+    );
+  }
+
+  return (
+    <div key={ability.id}>
+      <AbilityHeader>
+        <p>{ability.name}</p>
+        <button onClick={(e) => handleEdit(e)}>Edit</button>
+        <button>Del</button>
+      </AbilityHeader>
+      <p>{ability.desc}</p>
+    </div>
+  );
+}
+
 const SkillItem = styled.div`
   display: grid;
   grid-template-columns: 1fr auto 40px;
@@ -156,4 +205,9 @@ const SkillItem = styled.div`
 const RatingContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+`;
+
+const AbilityHeader = styled.div`
+  display: flex;
+  gap: 1em;
 `;
