@@ -178,34 +178,31 @@ function AbilityItem({ ability, onNameChange, onDescChange }) {
     setIsEdit(!isEdit);
   };
 
-  if (isEdit) {
-    return (
-      <div>
-        <AbilityHeader>
+  return (
+    <div key={ability.id}>
+      <AbilityHeader>
+        {isEdit ? (
           <input
             type="text"
             value={ability.name}
             onChange={(e) => onNameChange(e.target.value, ability.id)}
           />
-          <button onClick={(e) => handleEdit(e)}>Save</button>
-          <button>Del</button>
-        </AbilityHeader>
+        ) : (
+          <p>{ability.name}</p>
+        )}
+        <button onClick={(e) => handleEdit(e)}>
+          {isEdit ? "Save" : "Edit"}
+        </button>
+        <button>Del</button>
+      </AbilityHeader>
+      {isEdit ? (
         <textarea
           value={ability.desc}
           onChange={(e) => onDescChange(e.target.value, ability.id)}
         ></textarea>
-      </div>
-    );
-  }
-
-  return (
-    <div key={ability.id}>
-      <AbilityHeader>
-        <p>{ability.name}</p>
-        <button onClick={(e) => handleEdit(e)}>Edit</button>
-        <button>Del</button>
-      </AbilityHeader>
-      <p>{ability.desc}</p>
+      ) : (
+        <p>{ability.desc}</p>
+      )}
     </div>
   );
 }
