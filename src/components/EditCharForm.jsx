@@ -100,6 +100,15 @@ export default function EditCharForm({ char, onSubmit }) {
           );
         })}
       </FormArr>
+      <FormArr name="Abilities">
+        {charDetails.abilities.map((ability) => {
+          return (
+            <div>
+              {ability.name} - {ability.desc}
+            </div>
+          );
+        })}
+      </FormArr>
       <input type="submit" />
     </form>
   );
