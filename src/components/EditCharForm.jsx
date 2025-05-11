@@ -16,7 +16,8 @@ export default function EditCharForm({ char, onSubmit }) {
   const handleNewSkill = (e) => {
     e.preventDefault();
     const newSkills = charDetails.skills;
-    const newId = newSkills[newSkills.length - 1].id + 1;
+    const newId =
+      newSkills.length > 0 ? newSkills[newSkills.length - 1].id + 1 : 0;
     newSkills.push({ id: newId, name: "New Skill", rating: 1, active: false });
     setCharDetails({ ...charDetails, skills: newSkills });
   };
@@ -45,6 +46,11 @@ export default function EditCharForm({ char, onSubmit }) {
     setCharDetails({ ...charDetails, skills: newSkills });
   };
 
+  // const handleNewAbility = (e) => {
+  //   e.preventDefault();
+  //   const newAbilities = charDetails.abilities;
+  //   const newId =
+  // }
   const handleAbilityName = (value, id) => {
     const newAbilities = charDetails.abilities.map((ability) => {
       if (ability.id === id) {
@@ -135,6 +141,7 @@ export default function EditCharForm({ char, onSubmit }) {
         })}
       </FormArr>
       <FormArr name="Abilities">
+        <button>+ New Ability</button>
         {charDetails.abilities.map((ability) => {
           return (
             <AbilityItem
