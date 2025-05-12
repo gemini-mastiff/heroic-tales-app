@@ -145,12 +145,11 @@ export default function Main() {
     setCharArr([...charArr, newChar]);
     setCurrChar(newId);
   };
-  const handleCharEdit = (newCharDetails) => {
+  const handleCharEdit = (newCharDetails, id) => {
     setCharArr(
-      charArr.map((char, i) => {
-        if (i === currChar) {
-          return newCharDetails;
-        }
+      charArr.map((char) => {
+        if (char.id === id) return newCharDetails;
+        else return char;
       })
     );
     setEditChar(false);

@@ -16,7 +16,7 @@ export default function EditCharForm({ char, onSubmit }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(charDetails);
+    onSubmit(charDetails, charDetails.id);
   };
 
   const handleNewSkill = (e) => {
