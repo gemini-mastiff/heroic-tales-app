@@ -229,7 +229,18 @@ export default function EditCharForm({ char, onSubmit }) {
           }
         ></textarea>
       </div>
-      <FormArr name="Inventory" />
+      <FormArr name="Inventory">
+        <ul>
+          {charDetails.inventory.map((item) => {
+            return (
+              <li>
+                <p>{item}</p>
+                <button>Del</button>
+              </li>
+            );
+          })}
+        </ul>
+      </FormArr>
       <input type="submit" />
     </form>
   );
