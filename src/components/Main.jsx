@@ -77,7 +77,11 @@ export default function Main() {
     localStorage.setItem("charId", JSON.stringify(charId));
   }, [charArr, charId]);
 
-  const skillTotal = charArr[charId].skills
+  console.log(charArr);
+
+  const currChar = charArr.find((char) => char.id === charId);
+
+  const skillTotal = currChar.skills
     .filter((skill) => skill.active)
     .reduce((acc, skill) => acc + skill.rating, 0);
 
@@ -85,7 +89,7 @@ export default function Main() {
     setResults(false);
     setCharArr(
       charArr.map((char) => {
-        if (char.name === charArr[charId].name) {
+        if (char.id === charId) {
           char.skills.map((skillItem) => {
             if (skillItem.name === skill.name) {
               skill.active = !skill.active;
@@ -93,7 +97,7 @@ export default function Main() {
             }
           });
           return char;
-        }
+        } else return char;
       })
     );
   };
@@ -101,13 +105,11 @@ export default function Main() {
     setResults(false);
     setCharArr(
       charArr.map((char) => {
-        if (char.name === charArr[charId].name) {
-          char.skills.map((skill) => {
-            skill.active = false;
-            return skill;
-          });
-          return char;
-        }
+        char.skills.map((skill) => {
+          skill.active = false;
+          return skill;
+        });
+        return char;
       })
     );
   };
@@ -144,7 +146,7 @@ export default function Main() {
       img: null,
     };
     setCharArr([...charArr, newChar]);
-    setcharId(newId);
+    setCharId(newId);
   };
   const handleCharEdit = (newCharDetails, id) => {
     setCharArr(
@@ -155,14 +157,16 @@ export default function Main() {
     );
     setEditChar(false);
   };
+  const handleCharChange = (id) => {
+    setCharId(id);
+    resetSkills();
+  };
   const handleCharDel = (e, id) => {
     e.preventDefault();
     setDelChar(false);
     setCharArr(charArr.filter((char) => char.id !== id));
-    setcharId(charId - 1 > 0 ? charId : 0);
+    setCharId(charArr.length > 0 ? charArr[0].id : 0);
   };
-
-  console.log(charArr);
 
   return (
     <MainStyled>
@@ -174,13 +178,15 @@ export default function Main() {
               <Dropdown value="Choose Character">
                 {charArr.map((char) => {
                   return (
-                    <li onClick={() => setCharId(char.id)}>{char.name}</li>
+                    <li key={char.id} onClick={() => handleCharChange(char.id)}>
+                      {char.name}
+                    </li>
                   );
                 })}
                 <li onClick={handleNewChar}>+ New Character</li>
               </Dropdown>
               <CharSheet
-                char={charArr[charId]}
+                char={currChar}
                 handleSkill={handleSkill}
                 skillTotal={skillTotal}
                 setEditChar={setEditChar}
@@ -197,7 +203,7 @@ export default function Main() {
           </CharDiceContainer>
         </GameGrid>
         <DialogModal isOpen={editChar} onClose={setEditChar}>
-          <EditCharForm char={charArr[charId]} onSubmit={handleCharEdit} />
+          <EditCharForm char={currChar} onSubmit={handleCharEdit} />
         </DialogModal>
         <DialogModal isOpen={delChar} onClose={setDelChar}>
           <p>Are you sure you want to delete {charArr[charId].name}?</p>
