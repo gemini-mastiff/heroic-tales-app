@@ -58,15 +58,15 @@ const getCharArr = () => {
   return parsed ? parsed : initCharArr;
 };
 
-const getCurrChar = () => {
-  const saved = localStorage.getItem("currChar");
+const getCharId = () => {
+  const saved = localStorage.getItem("charId");
   const parsed = JSON.parse(saved);
   return parsed ? parsed : 0;
 };
 
 export default function Main() {
   const [charArr, setCharArr] = useState(getCharArr());
-  const [currChar, setCurrChar] = useState(getCurrChar());
+  const [charId, setCharId] = useState(getCharId());
   const [editChar, setEditChar] = useState(false);
   const [delChar, setDelChar] = useState(false);
   const [results, setResults] = useState(false);
@@ -74,10 +74,10 @@ export default function Main() {
 
   useEffect(() => {
     localStorage.setItem("charArr", JSON.stringify(charArr));
-    localStorage.setItem("currChar", JSON.stringify(currChar));
-  }, [charArr, currChar]);
+    localStorage.setItem("charId", JSON.stringify(charId));
+  }, [charArr, charId]);
 
-  const skillTotal = charArr[currChar].skills
+  const skillTotal = charArr[charId].skills
     .filter((skill) => skill.active)
     .reduce((acc, skill) => acc + skill.rating, 0);
 
@@ -85,7 +85,7 @@ export default function Main() {
     setResults(false);
     setCharArr(
       charArr.map((char) => {
-        if (char.name === charArr[currChar].name) {
+        if (char.name === charArr[charId].name) {
           char.skills.map((skillItem) => {
             if (skillItem.name === skill.name) {
               skill.active = !skill.active;
@@ -101,7 +101,7 @@ export default function Main() {
     setResults(false);
     setCharArr(
       charArr.map((char) => {
-        if (char.name === charArr[currChar].name) {
+        if (char.name === charArr[charId].name) {
           char.skills.map((skill) => {
             skill.active = false;
             return skill;
@@ -144,7 +144,7 @@ export default function Main() {
       img: null,
     };
     setCharArr([...charArr, newChar]);
-    setCurrChar(newId);
+    setcharId(newId);
   };
   const handleCharEdit = (newCharDetails, id) => {
     setCharArr(
@@ -155,8 +155,11 @@ export default function Main() {
     );
     setEditChar(false);
   };
-  const handleCharDel = (id) => {
+  const handleCharDel = (e, id) => {
+    e.preventDefault();
+    setDelChar(false);
     setCharArr(charArr.filter((char) => char.id !== id));
+    setcharId(charId - 1 > 0 ? charId : 0);
   };
 
   console.log(charArr);
@@ -171,13 +174,13 @@ export default function Main() {
               <Dropdown value="Choose Character">
                 {charArr.map((char) => {
                   return (
-                    <li onClick={() => setCurrChar(char.id)}>{char.name}</li>
+                    <li onClick={() => setCharId(char.id)}>{char.name}</li>
                   );
                 })}
                 <li onClick={handleNewChar}>+ New Character</li>
               </Dropdown>
               <CharSheet
-                char={charArr[currChar]}
+                char={charArr[charId]}
                 handleSkill={handleSkill}
                 skillTotal={skillTotal}
                 setEditChar={setEditChar}
@@ -194,12 +197,14 @@ export default function Main() {
           </CharDiceContainer>
         </GameGrid>
         <DialogModal isOpen={editChar} onClose={setEditChar}>
-          <EditCharForm char={charArr[currChar]} onSubmit={handleCharEdit} />
+          <EditCharForm char={charArr[charId]} onSubmit={handleCharEdit} />
         </DialogModal>
         <DialogModal isOpen={delChar} onClose={setDelChar}>
-          <p>Are you sure you want to delete {charArr[currChar].name}?</p>
+          <p>Are you sure you want to delete {charArr[charId].name}?</p>
           <button onClick={() => setDelChar(false)}>No</button>
-          <button>Yes, I'm sure</button>
+          <button onClick={(e) => handleCharDel(e, charId)}>
+            Yes, I'm sure
+          </button>
         </DialogModal>
       </WidthContainer>
     </MainStyled>
