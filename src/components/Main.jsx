@@ -57,16 +57,23 @@ const getCharArr = () => {
   return parsed ? parsed : initCharArr;
 };
 
+const getCurrChar = () => {
+  const saved = localStorage.getItem("currChar");
+  const parsed = JSON.parse(saved);
+  return parsed ? parsed : 0;
+};
+
 export default function Main() {
   const [charArr, setCharArr] = useState(getCharArr());
-  const [currChar, setCurrChar] = useState(0);
+  const [currChar, setCurrChar] = useState(getCurrChar());
   const [editChar, setEditChar] = useState(false);
   const [results, setResults] = useState(false);
   const [rollLog, setRollLog] = useState([]);
 
   useEffect(() => {
     localStorage.setItem("charArr", JSON.stringify(charArr));
-  }, [charArr]);
+    localStorage.setItem("currChar", JSON.stringify(currChar));
+  }, [charArr, currChar]);
 
   const skillTotal = charArr[currChar].skills
     .filter((skill) => skill.active)
