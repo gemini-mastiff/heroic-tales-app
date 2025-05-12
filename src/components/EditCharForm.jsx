@@ -113,6 +113,15 @@ export default function EditCharForm({ char, onSubmit }) {
     });
     setCharDetails({ ...charDetails, inventory: newInventory });
   };
+  const handleInvDel = (e, index) => {
+    e.preventDefault();
+    const newInv = charDetails.inventory;
+    newInv.splice(index, 1);
+    setCharDetails({
+      ...charDetails,
+      inventory: newInv,
+    });
+  };
 
   return (
     <form action="" onSubmit={(e) => handleSubmit(e)}>
@@ -254,7 +263,7 @@ export default function EditCharForm({ char, onSubmit }) {
                   value={item}
                   onChange={(value) => handleInvChange(value, index)}
                 />
-                <button>Del</button>
+                <button onClick={(e) => handleInvDel(e, index)}>Del</button>
               </li>
             );
           })}
