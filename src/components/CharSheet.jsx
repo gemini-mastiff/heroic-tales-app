@@ -29,8 +29,14 @@ export default function CharSheet({
         <div>
           <CharName>{char.name}</CharName>
           <CharHeading>{`${char.race} ${char.class} (${char.subclass})`}</CharHeading>
-          <Button onClick={() => setEditChar(true)}>Edit</Button>
-          <Button onClick={() => setDelChar(true)}>Del</Button>
+          <HeaderButtons>
+            <Button $small onClick={() => setEditChar(true)}>
+              Edit
+            </Button>
+            <Button $small onClick={() => setDelChar(true)}>
+              Del
+            </Button>
+          </HeaderButtons>
         </div>
         <CharImg src={char.img ? char.img : noImgSvg} alt="" />
       </CharHeader>
@@ -110,7 +116,7 @@ export default function CharSheet({
           )}
         </CharInfo>
       )}
-      <Button onClick={(e) => handleAccordion(e)}>
+      <Button $small onClick={(e) => handleAccordion(e)}>
         {isOpen ? "Show Less" : "Show More"}
       </Button>
     </CharSheetStyled>
@@ -133,6 +139,11 @@ const CharName = styled.h2`
   font-size: 1.75rem;
   font-weight: bold;
   text-decoration: underline;
+`;
+const HeaderButtons = styled.div`
+  display: flex;
+  gap: 1em;
+  margin-top: 0.25em;
 `;
 const CharImg = styled.img`
   height: 120px;
