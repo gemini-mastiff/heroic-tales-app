@@ -43,23 +43,27 @@ export default function CharSheet({
       <CharStats>
         <CharSkills>
           <CharHeading>Skills</CharHeading>
-          <List>
-            {char.skills.map((skill) => (
-              <SkillItem key={crypto.randomUUID()}>
-                <SkillButton
-                  onClick={() => handleSkill(skill)}
-                  disabled={
-                    (disableSkills && !skill.active) ||
-                    (skillTotal + skill.rating > 6 && !skill.active)
-                  }
-                >
-                  {skill.active ? "-" : "+"}
-                </SkillButton>
-                <p>{skill.name}</p>
-                <p>{skill.rating}</p>
-              </SkillItem>
-            ))}
-          </List>
+          {char.skills.length > 0 ? (
+            <List>
+              {char.skills.map((skill) => (
+                <SkillItem key={crypto.randomUUID()}>
+                  <SkillButton
+                    onClick={() => handleSkill(skill)}
+                    disabled={
+                      (disableSkills && !skill.active) ||
+                      (skillTotal + skill.rating > 6 && !skill.active)
+                    }
+                  >
+                    {skill.active ? "-" : "+"}
+                  </SkillButton>
+                  <p>{skill.name}</p>
+                  <p>{skill.rating}</p>
+                </SkillItem>
+              ))}
+            </List>
+          ) : (
+            "Add some skills!"
+          )}
         </CharSkills>
         <CharAbilities>
           <CharHeading>Abilities</CharHeading>
