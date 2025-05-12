@@ -220,14 +220,16 @@ export default function EditCharForm({ char, onSubmit }) {
         </StatBlock>
       </div>
       <div>
-        <label>Description:</label>
+        <label htmlFor="description">Description:</label>
         <textarea
+          id="description"
           value={charDetails.desc}
           onChange={(e) =>
             setCharDetails({ ...charDetails, desc: e.target.value })
           }
         ></textarea>
       </div>
+      <FormArr name="Inventory" />
       <input type="submit" />
     </form>
   );
