@@ -241,7 +241,7 @@ export default function EditCharForm({ char, onSubmit }) {
         <ul>
           {charDetails.inventory.map((item, index) => {
             return (
-              <li>
+              <li key={crypto.randomUUID()}>
                 <EditableText
                   value={item}
                   onChange={(value) => handleInvChange(value, index)}
