@@ -192,6 +192,7 @@ const SkillButton = styled.button`
   border-radius: 100px;
   &:hover {
     cursor: pointer;
+    opacity: 0.9;
   }
 `;
 const CharAbilities = styled.div`
