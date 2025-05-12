@@ -110,6 +110,7 @@ export default function Main() {
       })
     );
   };
+
   const handleResults = (checkNum) => {
     const newResults = rollCalc(checkNum + 1, skillTotal);
     let newRollLog;
@@ -118,6 +119,31 @@ export default function Main() {
     } else newRollLog = rollLog;
     setResults(newResults);
     setRollLog([...newRollLog, newResults]);
+  };
+
+  const handleNewChar = () => {
+    const newId = charArr.length > 0 ? charArr[charArr.length - 1].id + 1 : 0;
+    const newChar = {
+      id: newId,
+      name: "Name",
+      race: "Race",
+      class: "Class",
+      subclass: "Subclass",
+      skills: [],
+      abilities: [],
+      stats: {
+        hits: 0,
+        health: 5,
+        injuries: 0,
+        armour: 0,
+        cast: 0,
+      },
+      desc: "Add character's description here!.",
+      inventory: [],
+      img: null,
+    };
+    setCharArr([...charArr, newChar]);
+    setCurrChar(newId);
   };
   const handleCharEdit = (newCharDetails) => {
     setCharArr(
@@ -139,7 +165,12 @@ export default function Main() {
           <RollLog rollLog={rollLog} />
           <CharDiceContainer>
             <CharSheetContainer>
-              <Dropdown></Dropdown>
+              <Dropdown>
+                {charArr.map((char) => {
+                  return <li>{char.name}</li>;
+                })}
+                <li onClick={handleNewChar}>+ New Character</li>
+              </Dropdown>
               <CharSheet
                 char={charArr[currChar]}
                 handleSkill={handleSkill}
