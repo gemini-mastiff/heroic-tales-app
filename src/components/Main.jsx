@@ -81,9 +81,11 @@ export default function Main() {
 
   const currChar = charArr.find((char) => char.id === charId);
 
-  const skillTotal = currChar.skills
-    .filter((skill) => skill.active)
-    .reduce((acc, skill) => acc + skill.rating, 0);
+  const skillTotal = currChar
+    ? currChar.skills
+        .filter((skill) => skill.active)
+        .reduce((acc, skill) => acc + skill.rating, 0)
+    : 0;
 
   const handleSkill = (skill) => {
     setResults(false);
@@ -185,13 +187,17 @@ export default function Main() {
                 })}
                 <li onClick={handleNewChar}>+ New Character</li>
               </Dropdown>
-              <CharSheet
-                char={currChar}
-                handleSkill={handleSkill}
-                skillTotal={skillTotal}
-                setEditChar={setEditChar}
-                setDelChar={setDelChar}
-              />
+              {currChar ? (
+                <CharSheet
+                  char={currChar}
+                  handleSkill={handleSkill}
+                  skillTotal={skillTotal}
+                  setEditChar={setEditChar}
+                  setDelChar={setDelChar}
+                />
+              ) : (
+                "Add a character!"
+              )}
             </CharSheetContainer>
             <DiceBox
               skillTotal={skillTotal}
@@ -205,13 +211,15 @@ export default function Main() {
         <DialogModal isOpen={editChar} onClose={setEditChar}>
           <EditCharForm char={currChar} onSubmit={handleCharEdit} />
         </DialogModal>
-        <DialogModal isOpen={delChar} onClose={setDelChar}>
-          <p>Are you sure you want to delete {charArr[charId].name}?</p>
-          <button onClick={() => setDelChar(false)}>No</button>
-          <button onClick={(e) => handleCharDel(e, charId)}>
-            Yes, I'm sure
-          </button>
-        </DialogModal>
+        {currChar && (
+          <DialogModal isOpen={delChar} onClose={setDelChar}>
+            <p>Are you sure you want to delete {charArr[charId].name}?</p>
+            <button onClick={() => setDelChar(false)}>No</button>
+            <button onClick={(e) => handleCharDel(e, charId)}>
+              Yes, I'm sure
+            </button>
+          </DialogModal>
+        )}
       </WidthContainer>
     </MainStyled>
   );
