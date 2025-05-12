@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useState } from "react";
 import noImgSvg from "../assets/account.svg";
 import healthSvg from "../assets/health.svg";
 import hitsSvg from "../assets/hit.svg";
@@ -12,7 +13,13 @@ export default function CharSheet({
   skillTotal,
   setEditChar,
 }) {
+  const [isOpen, setIsOpen] = useState(false);
   const disableSkills = skillTotal >= 6;
+
+  const handleAccordion = (e) => {
+    e.preventDefault();
+    setIsOpen(!isOpen);
+  };
 
   return (
     <CharSheetStyled>
@@ -80,24 +87,29 @@ export default function CharSheet({
           </CharNumRow>
         </CharNums>
       </CharStats>
-      <CharInfo>
-        {char.desc && (
-          <CharDesc>
-            <CharHeading>Description</CharHeading>
-            <p>{char.desc}</p>
-          </CharDesc>
-        )}
-        {char.inventory.length > 0 && (
-          <CharInv>
-            <CharHeading>Inventory</CharHeading>
-            <InvList>
-              {char.inventory.map((item) => {
-                return <InvItem key={crypto.randomUUID()}>{item}</InvItem>;
-              })}
-            </InvList>
-          </CharInv>
-        )}
-      </CharInfo>
+      {isOpen && (
+        <CharInfo>
+          {char.desc && (
+            <CharDesc>
+              <CharHeading>Description</CharHeading>
+              <p>{char.desc}</p>
+            </CharDesc>
+          )}
+          {char.inventory.length > 0 && (
+            <CharInv>
+              <CharHeading>Inventory</CharHeading>
+              <InvList>
+                {char.inventory.map((item) => {
+                  return <InvItem key={crypto.randomUUID()}>{item}</InvItem>;
+                })}
+              </InvList>
+            </CharInv>
+          )}
+        </CharInfo>
+      )}
+      <button onClick={(e) => handleAccordion(e)}>
+        {isOpen ? "Close" : "Open"}
+      </button>
     </CharSheetStyled>
   );
 }
