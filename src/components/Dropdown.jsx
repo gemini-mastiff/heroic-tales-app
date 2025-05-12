@@ -11,7 +11,7 @@ export default function Dropdown({ children }) {
   return (
     <div>
       <button onClick={(e) => handleOpen(e)}>Dropdown</button>
-      {isOpen && <ul>{children}</ul>}
+      {isOpen && <ul onClick={() => setIsOpen(false)}>{children}</ul>}
     </div>
   );
 }
