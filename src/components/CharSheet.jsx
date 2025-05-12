@@ -39,7 +39,7 @@ export default function CharSheet({
           <List>
             {char.skills.map((skill) => (
               <SkillItem key={crypto.randomUUID()}>
-                <button
+                <SkillButton
                   onClick={() => handleSkill(skill)}
                   disabled={
                     (disableSkills && !skill.active) ||
@@ -47,7 +47,7 @@ export default function CharSheet({
                   }
                 >
                   {skill.active ? "-" : "+"}
-                </button>
+                </SkillButton>
                 <p>{skill.name}</p>
                 <p>{skill.rating}</p>
               </SkillItem>
@@ -127,23 +127,15 @@ const CharHeader = styled.div`
   justify-content: space-between;
   align-items: flex-start;
 `;
-
 const CharName = styled.h2`
   font-family: "Spectral SC", serif;
   font-size: 1.75rem;
   font-weight: bold;
   text-decoration: underline;
 `;
-
 const CharImg = styled.img`
   height: 120px;
   border: 4px solid var(--BG-COLOUR);
-`;
-
-const CharStats = styled.div`
-  margin-top: 1em;
-  display: flex;
-  gap: 1em;
 `;
 
 const CharHeading = styled.h3`
@@ -151,6 +143,11 @@ const CharHeading = styled.h3`
   font-size: 1.4rem;
 `;
 
+const CharStats = styled.div`
+  margin-top: 1em;
+  display: flex;
+  gap: 1em;
+`;
 const CharSkills = styled.div`
   flex: 2;
   background-color: var(--MAIN-COLOUR);
@@ -159,20 +156,34 @@ const CharSkills = styled.div`
 const List = styled.ul`
   list-style: none;
 `;
-
 const SkillItem = styled.li`
   display: grid;
   grid-template-columns: 20px 1fr 20px;
-  gap: 0.5em;
+  align-items: center;
+  gap: 0.75em;
 `;
-
+const SkillButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+  width: 25px;
+  background-color: #7f5af0;
+  color: var(--PRIMARY-TEXT);
+  font-family: inherit;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 100px;
+  &:hover {
+    cursor: pointer;
+  }
+`;
 const CharAbilities = styled.div`
   flex: 2;
   background-color: var(--MAIN-COLOUR);
 `;
 
 const CharNums = styled.div``;
-
 const CharNumRow = styled.div`
   display: flex;
   gap: 0.5em;
@@ -186,9 +197,7 @@ const CharInfo = styled.div`
   flex-direction: column;
   gap: 1em;
 `;
-
 const CharDesc = styled.div``;
-
 const CharInv = styled.div``;
 const InvList = styled.ul`
   list-style: inside square;
