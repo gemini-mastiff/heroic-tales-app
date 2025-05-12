@@ -219,6 +219,15 @@ export default function EditCharForm({ char, onSubmit }) {
           />
         </StatBlock>
       </div>
+      <div>
+        <label>Description:</label>
+        <textarea
+          value={charDetails.desc}
+          onChange={(e) =>
+            setCharDetails({ ...charDetails, desc: e.target.value })
+          }
+        ></textarea>
+      </div>
       <input type="submit" />
     </form>
   );
