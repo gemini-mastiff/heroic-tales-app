@@ -76,7 +76,7 @@ export default function Main() {
     const newId = charArr.length > 0 ? charArr[charArr.length - 1].id + 1 : 0;
     const newChar = {
       id: newId,
-      name: "Name",
+      name: "New Character",
       race: "Race",
       class: "Class",
       subclass: "Subclass",
