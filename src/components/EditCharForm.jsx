@@ -99,6 +99,14 @@ export default function EditCharForm({ char, onSubmit }) {
     setCharDetails({ ...charDetails, stats: newStats });
   };
 
+  const handleInvChange = (value, index) => {
+    const newInventory = charDetails.inventory.map((item, i) => {
+      if (i === index) return value;
+      else return item;
+    });
+    setCharDetails({ ...charDetails, inventory: newInventory });
+  };
+
   return (
     <form action="" onSubmit={(e) => handleSubmit(e)}>
       <TextInput
@@ -231,10 +239,13 @@ export default function EditCharForm({ char, onSubmit }) {
       </div>
       <FormArr name="Inventory">
         <ul>
-          {charDetails.inventory.map((item) => {
+          {charDetails.inventory.map((item, index) => {
             return (
               <li>
-                <p>{item}</p>
+                <EditableText
+                  value={item}
+                  onChange={(value) => handleInvChange(value, index)}
+                />
                 <button>Del</button>
               </li>
             );
