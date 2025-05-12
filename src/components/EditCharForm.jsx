@@ -2,6 +2,12 @@ import styled from "styled-components";
 import { useState } from "react";
 import TextInput from "./TextInput.jsx";
 import FormArr from "./FormArr.jsx";
+import noImgSvg from "../assets/account.svg";
+import healthSvg from "../assets/health.svg";
+import hitsSvg from "../assets/hit.svg";
+import injurySvg from "../assets/injury.svg";
+import shieldSvg from "../assets/shield.svg";
+import magicSvg from "../assets/magic.svg";
 
 export default function EditCharForm({ char, onSubmit }) {
   const [charDetails, setCharDetails] = useState({ ...char });
@@ -86,6 +92,13 @@ export default function EditCharForm({ char, onSubmit }) {
     setCharDetails({ ...charDetails, abilities: newAbilities });
   };
 
+  const handleStatChange = (value, stat) => {
+    const newStats = charDetails.stats;
+    const number = Math.floor(value);
+    newStats[stat] = number;
+    setCharDetails({ ...charDetails, stats: newStats });
+  };
+
   return (
     <form action="" onSubmit={(e) => handleSubmit(e)}>
       <TextInput
@@ -163,6 +176,49 @@ export default function EditCharForm({ char, onSubmit }) {
           );
         })}
       </FormArr>
+      <div>
+        <label>Stats:</label>
+        <StatBlock>
+          <StatIcon src={healthSvg} alt="Health" />
+          <p>Health: </p>
+          <EditableText
+            value={charDetails.stats.health}
+            onChange={(value) => handleStatChange(value, "health")}
+          />
+        </StatBlock>
+        <StatBlock>
+          <StatIcon src={hitsSvg} alt="Hits" />
+          <p>Hits: </p>
+          <EditableText
+            value={charDetails.stats.hits}
+            onChange={(value) => handleStatChange(value, "hits")}
+          />
+        </StatBlock>
+        <StatBlock>
+          <StatIcon src={injurySvg} alt="Injuries" />
+          <p>Injuries:</p>
+          <EditableText
+            value={charDetails.stats.injuries}
+            onChange={(value) => handleStatChange(value, "injuries")}
+          />
+        </StatBlock>
+        <StatBlock>
+          <StatIcon src={shieldSvg} alt="Armour" />
+          <p>Armour: </p>
+          <EditableText
+            value={charDetails.stats.armour}
+            onChange={(value) => handleStatChange(value, "armour")}
+          />
+        </StatBlock>
+        <StatBlock>
+          <StatIcon src={magicSvg} alt="Cast" />
+          <p>Cast:</p>
+          <EditableText
+            value={charDetails.stats.cast}
+            onChange={(value) => handleStatChange(value, "cast")}
+          />
+        </StatBlock>
+      </div>
       <input type="submit" />
     </form>
   );
@@ -244,4 +300,13 @@ const RatingContainer = styled.div`
 const AbilityHeader = styled.div`
   display: flex;
   gap: 1em;
+`;
+
+const StatBlock = styled.div`
+  display: flex;
+  gap: 0.5em;
+`;
+
+const StatIcon = styled.img`
+  width: 30px;
 `;
