@@ -68,6 +68,7 @@ export default function Main() {
   const [charArr, setCharArr] = useState(getCharArr());
   const [currChar, setCurrChar] = useState(getCurrChar());
   const [editChar, setEditChar] = useState(false);
+  const [delChar, setDelChar] = useState(false);
   const [results, setResults] = useState(false);
   const [rollLog, setRollLog] = useState([]);
 
@@ -154,6 +155,9 @@ export default function Main() {
     );
     setEditChar(false);
   };
+  const handleCharDel = (id) => {
+    setCharArr(charArr.filter((char) => char.id !== id));
+  };
 
   console.log(charArr);
 
@@ -177,6 +181,7 @@ export default function Main() {
                 handleSkill={handleSkill}
                 skillTotal={skillTotal}
                 setEditChar={setEditChar}
+                setDelChar={setDelChar}
               />
             </CharSheetContainer>
             <DiceBox
@@ -190,6 +195,11 @@ export default function Main() {
         </GameGrid>
         <DialogModal isOpen={editChar} onClose={setEditChar}>
           <EditCharForm char={charArr[currChar]} onSubmit={handleCharEdit} />
+        </DialogModal>
+        <DialogModal isOpen={delChar} onClose={setDelChar}>
+          <p>Are you sure you want to delete {charArr[currChar].name}?</p>
+          <button onClick={() => setDelChar(false)}>No</button>
+          <button>Yes, I'm sure</button>
         </DialogModal>
       </WidthContainer>
     </MainStyled>

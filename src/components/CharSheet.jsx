@@ -12,6 +12,7 @@ export default function CharSheet({
   handleSkill,
   skillTotal,
   setEditChar,
+  setDelChar,
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const disableSkills = skillTotal >= 6;
@@ -28,6 +29,7 @@ export default function CharSheet({
           <CharName>{char.name}</CharName>
           <CharHeading>{`${char.race} ${char.class} (${char.subclass})`}</CharHeading>
           <button onClick={() => setEditChar(true)}>Edit</button>
+          <button onClick={() => setDelChar(true)}>Del</button>
         </div>
         <CharImg src={char.img ? char.img : noImgSvg} alt="" />
       </CharHeader>
