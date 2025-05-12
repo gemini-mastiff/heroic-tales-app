@@ -99,6 +99,13 @@ export default function EditCharForm({ char, onSubmit }) {
     setCharDetails({ ...charDetails, stats: newStats });
   };
 
+  const handleNewInvItem = (e) => {
+    e.preventDefault();
+    setCharDetails({
+      ...charDetails,
+      inventory: [...charDetails.inventory, "New Item"],
+    });
+  };
   const handleInvChange = (value, index) => {
     const newInventory = charDetails.inventory.map((item, i) => {
       if (i === index) return value;
@@ -238,6 +245,7 @@ export default function EditCharForm({ char, onSubmit }) {
         ></textarea>
       </div>
       <FormArr name="Inventory">
+        <button onClick={(e) => handleNewInvItem(e)}>+ New Item</button>
         <ul>
           {charDetails.inventory.map((item, index) => {
             return (
