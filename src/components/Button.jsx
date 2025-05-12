@@ -7,7 +7,7 @@ const Button = styled.button`
   background-color: #7f5af0;
   color: var(--PRIMARY-TEXT);
   font-family: inherit;
-  font-size: 1.2rem;
+  font-size: ${(props) => (props.$small === true ? "0.8em" : "1.2em")};
   border: none;
   padding: 0.5em 1em;
   border-radius: 100px;
