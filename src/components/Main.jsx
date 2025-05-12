@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import rollCalc from "../js/rollCalc.js";
 import WidthContainer from "./WidthContainer.jsx";
 import RollLog from "./RollLog.jsx";
@@ -51,12 +51,22 @@ const initCharArr = [
   },
 ];
 
+const getCharArr = () => {
+  const saved = localStorage.getItem("charArr");
+  const parsed = JSON.parse(saved);
+  return parsed ? parsed : initCharArr;
+};
+
 export default function Main() {
-  const [charArr, setCharArr] = useState(initCharArr);
+  const [charArr, setCharArr] = useState(getCharArr());
   const [currChar, setCurrChar] = useState(0);
   const [editChar, setEditChar] = useState(false);
   const [results, setResults] = useState(false);
   const [rollLog, setRollLog] = useState([]);
+
+  useEffect(() => {
+    localStorage.setItem("charArr", JSON.stringify(charArr));
+  }, [charArr]);
 
   const skillTotal = charArr[currChar].skills
     .filter((skill) => skill.active)
