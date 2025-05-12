@@ -6,6 +6,7 @@ import hitsSvg from "../assets/hit.svg";
 import injurySvg from "../assets/injury.svg";
 import shieldSvg from "../assets/shield.svg";
 import magicSvg from "../assets/magic.svg";
+import Button from "./Button.jsx";
 
 export default function CharSheet({
   char,
@@ -28,8 +29,8 @@ export default function CharSheet({
         <div>
           <CharName>{char.name}</CharName>
           <CharHeading>{`${char.race} ${char.class} (${char.subclass})`}</CharHeading>
-          <button onClick={() => setEditChar(true)}>Edit</button>
-          <button onClick={() => setDelChar(true)}>Del</button>
+          <Button onClick={() => setEditChar(true)}>Edit</Button>
+          <Button onClick={() => setDelChar(true)}>Del</Button>
         </div>
         <CharImg src={char.img ? char.img : noImgSvg} alt="" />
       </CharHeader>
@@ -109,9 +110,9 @@ export default function CharSheet({
           )}
         </CharInfo>
       )}
-      <button onClick={(e) => handleAccordion(e)}>
-        {isOpen ? "Close" : "Open"}
-      </button>
+      <Button onClick={(e) => handleAccordion(e)}>
+        {isOpen ? "Show Less" : "Show More"}
+      </Button>
     </CharSheetStyled>
   );
 }
