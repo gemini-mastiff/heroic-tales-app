@@ -4,6 +4,7 @@ import rollCalc from "../js/rollCalc.js";
 import WidthContainer from "./WidthContainer.jsx";
 import RollLog from "./RollLog.jsx";
 import CharSheet from "./CharSheet.jsx";
+import Dropdown from "./Dropdown.jsx";
 import DiceBox from "./DiceBox.jsx";
 import DialogModal from "./DialogModal.jsx";
 import EditCharForm from "./EditCharForm.jsx";
@@ -138,6 +139,7 @@ export default function Main() {
           <RollLog rollLog={rollLog} />
           <CharDiceContainer>
             <CharSheetContainer>
+              <Dropdown></Dropdown>
               <CharSheet
                 char={charArr[currChar]}
                 handleSkill={handleSkill}
