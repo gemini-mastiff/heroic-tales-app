@@ -164,7 +164,7 @@ export default function Main() {
           <RollLog rollLog={rollLog} />
           <CharDiceContainer>
             <CharSheetContainer>
-              <Dropdown>
+              <Dropdown value="Choose Character">
                 {charArr.map((char) => {
                   return (
                     <li onClick={() => setCurrChar(char.id)}>{char.name}</li>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Dropdown({ children }) {
+export default function Dropdown({ value, children }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpen = (e) => {
@@ -10,7 +10,7 @@ export default function Dropdown({ children }) {
 
   return (
     <div>
-      <button onClick={(e) => handleOpen(e)}>Dropdown</button>
+      <button onClick={(e) => handleOpen(e)}>{value}</button>
       {isOpen && <ul onClick={() => setIsOpen(false)}>{children}</ul>}
     </div>
   );
