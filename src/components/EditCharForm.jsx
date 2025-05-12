@@ -150,7 +150,7 @@ export default function EditCharForm({ char, onSubmit }) {
         name="Subclass"
         value={charDetails.subclass}
         onChange={(e) =>
-          setCharDetails({ ...charDetails, sublass: e.target.value })
+          setCharDetails({ ...charDetails, subclass: e.target.value })
         }
       />
       <FormArr name="Skills">
