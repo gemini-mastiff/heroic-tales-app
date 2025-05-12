@@ -126,12 +126,17 @@ export default function Main() {
               <Dropdown value="Choose Character">
                 {charArr.map((char) => {
                   return (
-                    <li key={char.id} onClick={() => handleCharChange(char.id)}>
+                    <DropdownItem
+                      key={char.id}
+                      onClick={() => handleCharChange(char.id)}
+                    >
                       {char.name}
-                    </li>
+                    </DropdownItem>
                   );
                 })}
-                <li onClick={handleNewChar}>+ New Character</li>
+                <DropdownItem onClick={handleNewChar}>
+                  + New Character
+                </DropdownItem>
               </Dropdown>
               {currChar ? (
                 <CharSheet
@@ -194,4 +199,12 @@ const CharDiceContainer = styled.div`
 const CharSheetContainer = styled.div`
   background-color: var(--MAIN-COLOUR);
   padding: 0.5em;
+`;
+
+const DropdownItem = styled.li`
+  margin: 0.2em;
+  &:hover {
+    opacity: 0.6;
+    cursor: pointer;
+  }
 `;

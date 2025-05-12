@@ -1,4 +1,6 @@
 import { useState } from "react";
+import styled from "styled-components";
+import Button from "./Button.jsx";
 
 export default function Dropdown({ value, children }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,9 +11,33 @@ export default function Dropdown({ value, children }) {
   };
 
   return (
-    <div>
-      <button onClick={(e) => handleOpen(e)}>{value}</button>
-      {isOpen && <ul onClick={() => setIsOpen(false)}>{children}</ul>}
-    </div>
+    <DropdownStyled>
+      <Button $small onClick={(e) => handleOpen(e)}>
+        {value}
+      </Button>
+      {isOpen && (
+        <DropdownList onClick={() => setIsOpen(false)}>{children}</DropdownList>
+      )}
+    </DropdownStyled>
   );
 }
+
+const DropdownStyled = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 0.5em;
+`;
+
+const DropdownList = styled.ul`
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  padding: 0.5em;
+  list-style: none;
+  text-align: center;
+  border: 2px solid var(--PRIMARY-TEXT);
+  border-radius: 20px;
+  background-color: var(--BG-COLOUR);
+`;
