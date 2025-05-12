@@ -167,7 +167,9 @@ export default function Main() {
             <CharSheetContainer>
               <Dropdown>
                 {charArr.map((char) => {
-                  return <li>{char.name}</li>;
+                  return (
+                    <li onClick={() => setCurrChar(char.id)}>{char.name}</li>
+                  );
                 })}
                 <li onClick={handleNewChar}>+ New Character</li>
               </Dropdown>
