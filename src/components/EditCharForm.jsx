@@ -124,7 +124,7 @@ export default function EditCharForm({ char, onSubmit }) {
   };
 
   return (
-    <form action="" onSubmit={(e) => handleSubmit(e)}>
+    <FormStyled action="" onSubmit={(e) => handleSubmit(e)}>
       <TextInput
         name="Name"
         value={charDetails.name}
@@ -270,7 +270,7 @@ export default function EditCharForm({ char, onSubmit }) {
         </ul>
       </FormArr>
       <input type="submit" />
-    </form>
+    </FormStyled>
   );
 }
 
@@ -336,6 +336,11 @@ function AbilityItem({ ability, onNameChange, onDescChange, onDel }) {
     </div>
   );
 }
+
+const FormStyled = styled.form`
+  max-height: 80vh;
+  overflow-y: auto;
+`;
 
 const SkillItem = styled.div`
   display: grid;
