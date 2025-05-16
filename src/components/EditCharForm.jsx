@@ -292,7 +292,7 @@ export default function EditCharForm({ char, onSubmit }) {
         <ul>
           {charDetails.inventory.map((item, index) => {
             return (
-              <li key={crypto.randomUUID()}>
+              <li key={index}>
                 <StyledInput
                   value={item}
                   onChange={(e) => handleInvChange(e.target.value, index)}
