@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
 import TextInput from "./TextInput.jsx";
+import Button from "./Button.jsx";
 import noImgSvg from "../assets/account.svg";
 import healthSvg from "../assets/health.svg";
 import hitsSvg from "../assets/hit.svg";
@@ -159,7 +160,9 @@ export default function EditCharForm({ char, onSubmit }) {
       </div>
       <div name="Skills">
         <Header>Skills:</Header>
-        <button onClick={(e) => handleNewSkill(e)}>+ New Skill</button>
+        <Button $small onClick={(e) => handleNewSkill(e)}>
+          + New Skill
+        </Button>
         {charDetails.skills.map((skill) => {
           return (
             <SkillItem key={skill.id}>
@@ -168,32 +171,38 @@ export default function EditCharForm({ char, onSubmit }) {
                 onChange={(e) => handleSkillName(e.target.value, skill.id)}
               />
               <RatingContainer>
-                <button
+                <Button
+                  $small
                   disabled={skill.rating <= 1}
                   onClick={(e) =>
                     handleSkillRating(e, skill.rating - 1, skill.id)
                   }
                 >
                   -
-                </button>
+                </Button>
                 <p>{skill.rating}</p>
-                <button
+                <Button
+                  $small
                   disabled={skill.rating >= 3}
                   onClick={(e) =>
                     handleSkillRating(e, skill.rating + 1, skill.id)
                   }
                 >
                   +
-                </button>
+                </Button>
               </RatingContainer>
-              <button onClick={(e) => handelSkillDel(e, skill.id)}>Del</button>
+              <Button $small onClick={(e) => handelSkillDel(e, skill.id)}>
+                Del
+              </Button>
             </SkillItem>
           );
         })}
       </div>
       <div name="Abilities">
         <Header>Abilities:</Header>
-        <button onClick={(e) => handleNewAbility(e)}>+ New Ability</button>
+        <Button $small onClick={(e) => handleNewAbility(e)}>
+          + New Ability
+        </Button>
         {charDetails.abilities.map((ability) => {
           return (
             <AbilityItem
@@ -266,17 +275,21 @@ export default function EditCharForm({ char, onSubmit }) {
           {charDetails.inventory.map((item, index) => {
             return (
               <li key={crypto.randomUUID()}>
-                <EditableText
+                <input
                   value={item}
-                  onChange={(value) => handleInvChange(value, index)}
+                  onChange={(e) => handleInvChange(e.target.value, index)}
                 />
-                <button onClick={(e) => handleInvDel(e, index)}>Del</button>
+                <Button $small onClick={(e) => handleInvDel(e, index)}>
+                  Del
+                </Button>
               </li>
             );
           })}
         </ul>
       </div>
-      <input type="submit" />
+      <Button $small type="submit">
+        Submit
+      </Button>
     </FormStyled>
   );
 }
@@ -327,10 +340,12 @@ function AbilityItem({ ability, onNameChange, onDescChange, onDel }) {
         ) : (
           <p>{ability.name}</p>
         )}
-        <button onClick={(e) => handleEdit(e)}>
+        <Button $small onClick={(e) => handleEdit(e)}>
           {isEdit ? "Save" : "Edit"}
-        </button>
-        <button onClick={(e) => onDel(e, ability.id)}>Del</button>
+        </Button>
+        <Button $small onClick={(e) => onDel(e, ability.id)}>
+          Del
+        </Button>
       </AbilityHeader>
       {isEdit ? (
         <textarea
