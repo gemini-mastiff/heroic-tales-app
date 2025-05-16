@@ -94,7 +94,7 @@ export default function EditCharForm({ char, onSubmit }) {
   };
 
   const handleStatChange = (value, stat) => {
-    const newStats = charDetails.stats;
+    let newStats = charDetails.stats;
     const number = Math.floor(value);
     newStats[stat] = number;
     setCharDetails({ ...charDetails, stats: newStats });
@@ -233,40 +233,45 @@ export default function EditCharForm({ char, onSubmit }) {
           <StatIcon src={healthSvg} alt="Health" />
           <p>Health: </p>
           <StyledInput
+            type="number"
             value={charDetails.stats.health}
-            onChange={(value) => handleStatChange(value, "health")}
+            onChange={(e) => handleStatChange(e.target.value, "health")}
           />
         </StatBlock>
         <StatBlock>
           <StatIcon src={hitsSvg} alt="Hits" />
           <p>Hits: </p>
           <StyledInput
+            type="number"
             value={charDetails.stats.hits}
-            onChange={(value) => handleStatChange(value, "hits")}
+            onChange={(e) => handleStatChange(e.target.value, "hits")}
           />
         </StatBlock>
         <StatBlock>
           <StatIcon src={injurySvg} alt="Injuries" />
           <p>Injuries:</p>
           <StyledInput
+            type="number"
             value={charDetails.stats.injuries}
-            onChange={(value) => handleStatChange(value, "injuries")}
+            onChange={(e) => handleStatChange(e.target.value, "injuries")}
           />
         </StatBlock>
         <StatBlock>
           <StatIcon src={shieldSvg} alt="Armour" />
           <p>Armour: </p>
           <StyledInput
+            type="number"
             value={charDetails.stats.armour}
-            onChange={(value) => handleStatChange(value, "armour")}
+            onChange={(e) => handleStatChange(e.target.value, "armour")}
           />
         </StatBlock>
         <StatBlock>
           <StatIcon src={magicSvg} alt="Cast" />
           <p>Cast:</p>
           <StyledInput
+            type="number"
             value={charDetails.stats.cast}
-            onChange={(value) => handleStatChange(value, "cast")}
+            onChange={(e) => handleStatChange(e.target.value, "cast")}
           />
         </StatBlock>
       </div>
