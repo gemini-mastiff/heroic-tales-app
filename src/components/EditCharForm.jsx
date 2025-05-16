@@ -232,7 +232,7 @@ export default function EditCharForm({ char, onSubmit }) {
         <StatBlock>
           <StatIcon src={healthSvg} alt="Health" />
           <p>Health: </p>
-          <EditableText
+          <StyledInput
             value={charDetails.stats.health}
             onChange={(value) => handleStatChange(value, "health")}
           />
@@ -240,7 +240,7 @@ export default function EditCharForm({ char, onSubmit }) {
         <StatBlock>
           <StatIcon src={hitsSvg} alt="Hits" />
           <p>Hits: </p>
-          <EditableText
+          <StyledInput
             value={charDetails.stats.hits}
             onChange={(value) => handleStatChange(value, "hits")}
           />
@@ -248,7 +248,7 @@ export default function EditCharForm({ char, onSubmit }) {
         <StatBlock>
           <StatIcon src={injurySvg} alt="Injuries" />
           <p>Injuries:</p>
-          <EditableText
+          <StyledInput
             value={charDetails.stats.injuries}
             onChange={(value) => handleStatChange(value, "injuries")}
           />
@@ -256,7 +256,7 @@ export default function EditCharForm({ char, onSubmit }) {
         <StatBlock>
           <StatIcon src={shieldSvg} alt="Armour" />
           <p>Armour: </p>
-          <EditableText
+          <StyledInput
             value={charDetails.stats.armour}
             onChange={(value) => handleStatChange(value, "armour")}
           />
@@ -264,7 +264,7 @@ export default function EditCharForm({ char, onSubmit }) {
         <StatBlock>
           <StatIcon src={magicSvg} alt="Cast" />
           <p>Cast:</p>
-          <EditableText
+          <StyledInput
             value={charDetails.stats.cast}
             onChange={(value) => handleStatChange(value, "cast")}
           />
@@ -318,32 +318,6 @@ function TextInput({ name, value, onChange }) {
       <InputLabel htmlFor={name}>{name}:</InputLabel>
       <StyledInput type="text" id={name} value={value} onChange={onChange} />
     </InputDiv>
-  );
-}
-
-function EditableText({ value, onChange }) {
-  const [isEdit, setIsEdit] = useState(false);
-
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      setIsEdit(false);
-    }
-  };
-
-  return (
-    <>
-      {isEdit ? (
-        <input
-          autoFocus
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          onBlur={() => setIsEdit(false)}
-          onKeyDown={(e) => handleKeyPress(e)}
-        />
-      ) : (
-        <p onClick={() => setIsEdit(true)}>{value}</p>
-      )}
-    </>
   );
 }
 
