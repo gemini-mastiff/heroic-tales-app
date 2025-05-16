@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
 import TextInput from "./TextInput.jsx";
-import FormArr from "./FormArr.jsx";
 import noImgSvg from "../assets/account.svg";
 import healthSvg from "../assets/health.svg";
 import hitsSvg from "../assets/hit.svg";
@@ -32,7 +31,9 @@ export default function EditCharForm({ char, onSubmit }) {
       if (id === skill.id) {
         skill.name = value;
         return skill;
-      } else return skill;
+      } else {
+        return skill;
+      }
     });
     setCharDetails({ ...charDetails, skills: newSkills });
   };
@@ -125,42 +126,46 @@ export default function EditCharForm({ char, onSubmit }) {
 
   return (
     <FormStyled action="" onSubmit={(e) => handleSubmit(e)}>
-      <TextInput
-        name="Name"
-        value={charDetails.name}
-        onChange={(e) =>
-          setCharDetails({ ...charDetails, name: e.target.value })
-        }
-      />
-      <TextInput
-        name="Race"
-        value={charDetails.race}
-        onChange={(e) =>
-          setCharDetails({ ...charDetails, race: e.target.value })
-        }
-      />
-      <TextInput
-        name="Class"
-        value={charDetails.class}
-        onChange={(e) =>
-          setCharDetails({ ...charDetails, class: e.target.value })
-        }
-      />
-      <TextInput
-        name="Subclass"
-        value={charDetails.subclass}
-        onChange={(e) =>
-          setCharDetails({ ...charDetails, subclass: e.target.value })
-        }
-      />
-      <FormArr name="Skills">
+      <Header>Info:</Header>
+      <div>
+        <TextInput
+          name="Name"
+          value={charDetails.name}
+          onChange={(e) =>
+            setCharDetails({ ...charDetails, name: e.target.value })
+          }
+        />
+        <TextInput
+          name="Race"
+          value={charDetails.race}
+          onChange={(e) =>
+            setCharDetails({ ...charDetails, race: e.target.value })
+          }
+        />
+        <TextInput
+          name="Class"
+          value={charDetails.class}
+          onChange={(e) =>
+            setCharDetails({ ...charDetails, class: e.target.value })
+          }
+        />
+        <TextInput
+          name="Subclass"
+          value={charDetails.subclass}
+          onChange={(e) =>
+            setCharDetails({ ...charDetails, subclass: e.target.value })
+          }
+        />
+      </div>
+      <div name="Skills">
+        <Header>Skills:</Header>
         <button onClick={(e) => handleNewSkill(e)}>+ New Skill</button>
         {charDetails.skills.map((skill) => {
           return (
             <SkillItem key={skill.id}>
-              <EditableText
+              <input
                 value={skill.name}
-                onChange={(value) => handleSkillName(value, skill.id)}
+                onChange={(e) => handleSkillName(e.target.value, skill.id)}
               />
               <RatingContainer>
                 <button
@@ -185,8 +190,9 @@ export default function EditCharForm({ char, onSubmit }) {
             </SkillItem>
           );
         })}
-      </FormArr>
-      <FormArr name="Abilities">
+      </div>
+      <div name="Abilities">
+        <Header>Abilities:</Header>
         <button onClick={(e) => handleNewAbility(e)}>+ New Ability</button>
         {charDetails.abilities.map((ability) => {
           return (
@@ -199,9 +205,9 @@ export default function EditCharForm({ char, onSubmit }) {
             />
           );
         })}
-      </FormArr>
+      </div>
       <div>
-        <label>Stats:</label>
+        <Header>Stats:</Header>
         <StatBlock>
           <StatIcon src={healthSvg} alt="Health" />
           <p>Health: </p>
@@ -244,7 +250,7 @@ export default function EditCharForm({ char, onSubmit }) {
         </StatBlock>
       </div>
       <div>
-        <label htmlFor="description">Description:</label>
+        <Header htmlFor="description">Description:</Header>
         <textarea
           id="description"
           value={charDetails.desc}
@@ -253,7 +259,8 @@ export default function EditCharForm({ char, onSubmit }) {
           }
         ></textarea>
       </div>
-      <FormArr name="Inventory">
+      <div>
+        <Header>Inventory:</Header>
         <button onClick={(e) => handleNewInvItem(e)}>+ New Item</button>
         <ul>
           {charDetails.inventory.map((item, index) => {
@@ -268,7 +275,7 @@ export default function EditCharForm({ char, onSubmit }) {
             );
           })}
         </ul>
-      </FormArr>
+      </div>
       <input type="submit" />
     </FormStyled>
   );
@@ -340,6 +347,12 @@ function AbilityItem({ ability, onNameChange, onDescChange, onDel }) {
 const FormStyled = styled.form`
   max-height: 80vh;
   overflow-y: auto;
+  padding: 1em;
+`;
+
+const Header = styled.label`
+  font-family: "Spectral SC", serif;
+  font-size: 1.5rem;
 `;
 
 const SkillItem = styled.div`
