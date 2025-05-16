@@ -127,7 +127,7 @@ export default function EditCharForm({ char, onSubmit }) {
 
   return (
     <FormStyled action="" onSubmit={(e) => handleSubmit(e)}>
-      <Section>
+      <div>
         <HeaderContainer>
           <Header>Info:</Header>
         </HeaderContainer>
@@ -161,8 +161,8 @@ export default function EditCharForm({ char, onSubmit }) {
             }
           />
         </div>
-      </Section>
-      <Section>
+      </div>
+      <div>
         <HeaderContainer>
           <Header>Skills:</Header>
           <Button $small onClick={(e) => handleNewSkill(e)}>
@@ -203,8 +203,8 @@ export default function EditCharForm({ char, onSubmit }) {
             </SkillItem>
           );
         })}
-      </Section>
-      <Section>
+      </div>
+      <div>
         <HeaderContainer>
           <Header>Abilities:</Header>
           <Button $small onClick={(e) => handleNewAbility(e)}>
@@ -222,8 +222,8 @@ export default function EditCharForm({ char, onSubmit }) {
             />
           );
         })}
-      </Section>
-      <Section>
+      </div>
+      <div>
         <HeaderContainer>
           <Header>Stats:</Header>
         </HeaderContainer>
@@ -267,8 +267,8 @@ export default function EditCharForm({ char, onSubmit }) {
             onChange={(value) => handleStatChange(value, "cast")}
           />
         </StatBlock>
-      </Section>
-      <Section>
+      </div>
+      <div>
         <HeaderContainer>
           <Header htmlFor="description">Description:</Header>
         </HeaderContainer>
@@ -279,8 +279,8 @@ export default function EditCharForm({ char, onSubmit }) {
             setCharDetails({ ...charDetails, desc: e.target.value })
           }
         ></textarea>
-      </Section>
-      <Section>
+      </div>
+      <div>
         <HeaderContainer>
           <Header>Inventory:</Header>
           <Button $small onClick={(e) => handleNewInvItem(e)}>
@@ -302,7 +302,7 @@ export default function EditCharForm({ char, onSubmit }) {
             );
           })}
         </ul>
-      </Section>
+      </div>
       <Button $small type="submit">
         Submit
       </Button>
@@ -380,8 +380,6 @@ const FormStyled = styled.form`
   overflow-y: auto;
   padding: 1em;
 `;
-
-const Section = styled.div``;
 
 const HeaderContainer = styled.div`
   display: flex;
