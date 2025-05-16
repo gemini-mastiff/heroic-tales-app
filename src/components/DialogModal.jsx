@@ -29,6 +29,7 @@ const DialogBg = styled(DialogBackdrop)`
 
 const DialogPositioned = styled(DialogPanel)`
   width: 60%;
+  max-width: 800px;
   position: fixed;
   top: 50%;
   left: 50%;
