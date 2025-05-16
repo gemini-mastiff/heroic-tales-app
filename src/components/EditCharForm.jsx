@@ -161,7 +161,7 @@ export default function EditCharForm({ char, onSubmit }) {
               }
             />
           </div>
-          {/* <CharImg src={char.img ? char.img : noImgSvg} alt="" /> */}
+          <CharImg src={char.img ? char.img : noImgSvg} alt="" />
         </InfoSection>
       </div>
       <div>
