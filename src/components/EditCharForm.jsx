@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { useState } from "react";
-import TextInput from "./TextInput.jsx";
 import Button from "./Button.jsx";
 import noImgSvg from "../assets/account.svg";
 import healthSvg from "../assets/health.svg";
@@ -131,36 +130,39 @@ export default function EditCharForm({ char, onSubmit }) {
         <HeaderContainer>
           <Header>Info:</Header>
         </HeaderContainer>
-        <div>
-          <TextInput
-            name="Name"
-            value={charDetails.name}
-            onChange={(e) =>
-              setCharDetails({ ...charDetails, name: e.target.value })
-            }
-          />
-          <TextInput
-            name="Race"
-            value={charDetails.race}
-            onChange={(e) =>
-              setCharDetails({ ...charDetails, race: e.target.value })
-            }
-          />
-          <TextInput
-            name="Class"
-            value={charDetails.class}
-            onChange={(e) =>
-              setCharDetails({ ...charDetails, class: e.target.value })
-            }
-          />
-          <TextInput
-            name="Subclass"
-            value={charDetails.subclass}
-            onChange={(e) =>
-              setCharDetails({ ...charDetails, subclass: e.target.value })
-            }
-          />
-        </div>
+        <InfoSection>
+          <div>
+            <TextInput
+              name="Name"
+              value={charDetails.name}
+              onChange={(e) =>
+                setCharDetails({ ...charDetails, name: e.target.value })
+              }
+            />
+            <TextInput
+              name="Race"
+              value={charDetails.race}
+              onChange={(e) =>
+                setCharDetails({ ...charDetails, race: e.target.value })
+              }
+            />
+            <TextInput
+              name="Class"
+              value={charDetails.class}
+              onChange={(e) =>
+                setCharDetails({ ...charDetails, class: e.target.value })
+              }
+            />
+            <TextInput
+              name="Subclass"
+              value={charDetails.subclass}
+              onChange={(e) =>
+                setCharDetails({ ...charDetails, subclass: e.target.value })
+              }
+            />
+          </div>
+          {/* <CharImg src={char.img ? char.img : noImgSvg} alt="" /> */}
+        </InfoSection>
       </div>
       <div>
         <HeaderContainer>
@@ -310,6 +312,15 @@ export default function EditCharForm({ char, onSubmit }) {
   );
 }
 
+function TextInput({ name, value, onChange }) {
+  return (
+    <InputDiv>
+      <InputLabel htmlFor={name}>{name}:</InputLabel>
+      <input type="text" id={name} value={value} onChange={onChange} />
+    </InputDiv>
+  );
+}
+
 function EditableText({ value, onChange }) {
   const [isEdit, setIsEdit] = useState(false);
 
@@ -390,6 +401,25 @@ const HeaderContainer = styled.div`
 const Header = styled.label`
   font-family: "Spectral SC", serif;
   font-size: 1.5rem;
+`;
+
+const InfoSection = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const InputDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+const InputLabel = styled.label`
+  font-size: 0.8rem;
+`;
+
+const CharImg = styled.img`
+  height: 120px;
+  border: 4px solid var(--BG-COLOUR);
 `;
 
 const SkillItem = styled.div`
