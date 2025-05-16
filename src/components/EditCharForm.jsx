@@ -174,7 +174,7 @@ export default function EditCharForm({ char, onSubmit }) {
         {charDetails.skills.map((skill) => {
           return (
             <SkillItem key={skill.id}>
-              <input
+              <StyledInput
                 value={skill.name}
                 onChange={(e) => handleSkillName(e.target.value, skill.id)}
               />
@@ -293,7 +293,7 @@ export default function EditCharForm({ char, onSubmit }) {
           {charDetails.inventory.map((item, index) => {
             return (
               <li key={crypto.randomUUID()}>
-                <input
+                <StyledInput
                   value={item}
                   onChange={(e) => handleInvChange(e.target.value, index)}
                 />
@@ -316,7 +316,7 @@ function TextInput({ name, value, onChange }) {
   return (
     <InputDiv>
       <InputLabel htmlFor={name}>{name}:</InputLabel>
-      <input type="text" id={name} value={value} onChange={onChange} />
+      <StyledInput type="text" id={name} value={value} onChange={onChange} />
     </InputDiv>
   );
 }
@@ -359,7 +359,7 @@ function AbilityItem({ ability, onNameChange, onDescChange, onDel }) {
     <div key={ability.id}>
       <AbilityHeader>
         {isEdit ? (
-          <input
+          <StyledInput
             type="text"
             value={ability.name}
             onChange={(e) => onNameChange(e.target.value, ability.id)}
@@ -414,9 +414,18 @@ const InputDiv = styled.div`
   flex-direction: column;
 `;
 const InputLabel = styled.label`
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+  margin-left: 0.6em;
 `;
-
+const StyledInput = styled.input`
+  background-color: #fff;
+  color: var(--BG-COLOUR);
+  font-family: "DM Sans", sans-serif;
+  font-size: 1rem;
+  border: none;
+  border-radius: 100px;
+  padding: 0.25em 0.5em;
+`;
 const CharImg = styled.img`
   height: 120px;
   border: 4px solid var(--BG-COLOUR);
