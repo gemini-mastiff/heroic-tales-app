@@ -127,42 +127,46 @@ export default function EditCharForm({ char, onSubmit }) {
 
   return (
     <FormStyled action="" onSubmit={(e) => handleSubmit(e)}>
-      <Header>Info:</Header>
-      <div>
-        <TextInput
-          name="Name"
-          value={charDetails.name}
-          onChange={(e) =>
-            setCharDetails({ ...charDetails, name: e.target.value })
-          }
-        />
-        <TextInput
-          name="Race"
-          value={charDetails.race}
-          onChange={(e) =>
-            setCharDetails({ ...charDetails, race: e.target.value })
-          }
-        />
-        <TextInput
-          name="Class"
-          value={charDetails.class}
-          onChange={(e) =>
-            setCharDetails({ ...charDetails, class: e.target.value })
-          }
-        />
-        <TextInput
-          name="Subclass"
-          value={charDetails.subclass}
-          onChange={(e) =>
-            setCharDetails({ ...charDetails, subclass: e.target.value })
-          }
-        />
-      </div>
-      <div name="Skills">
-        <Header>Skills:</Header>
-        <Button $small onClick={(e) => handleNewSkill(e)}>
-          + New Skill
-        </Button>
+      <Section>
+        <Header>Info:</Header>
+        <div>
+          <TextInput
+            name="Name"
+            value={charDetails.name}
+            onChange={(e) =>
+              setCharDetails({ ...charDetails, name: e.target.value })
+            }
+          />
+          <TextInput
+            name="Race"
+            value={charDetails.race}
+            onChange={(e) =>
+              setCharDetails({ ...charDetails, race: e.target.value })
+            }
+          />
+          <TextInput
+            name="Class"
+            value={charDetails.class}
+            onChange={(e) =>
+              setCharDetails({ ...charDetails, class: e.target.value })
+            }
+          />
+          <TextInput
+            name="Subclass"
+            value={charDetails.subclass}
+            onChange={(e) =>
+              setCharDetails({ ...charDetails, subclass: e.target.value })
+            }
+          />
+        </div>
+      </Section>
+      <Section>
+        <HeaderContainer>
+          <Header>Skills:</Header>
+          <Button $small onClick={(e) => handleNewSkill(e)}>
+            + New Skill
+          </Button>
+        </HeaderContainer>
         {charDetails.skills.map((skill) => {
           return (
             <SkillItem key={skill.id}>
@@ -197,12 +201,14 @@ export default function EditCharForm({ char, onSubmit }) {
             </SkillItem>
           );
         })}
-      </div>
-      <div name="Abilities">
-        <Header>Abilities:</Header>
-        <Button $small onClick={(e) => handleNewAbility(e)}>
-          + New Ability
-        </Button>
+      </Section>
+      <Section>
+        <HeaderContainer>
+          <Header>Abilities:</Header>
+          <Button $small onClick={(e) => handleNewAbility(e)}>
+            + New Ability
+          </Button>
+        </HeaderContainer>
         {charDetails.abilities.map((ability) => {
           return (
             <AbilityItem
@@ -214,8 +220,8 @@ export default function EditCharForm({ char, onSubmit }) {
             />
           );
         })}
-      </div>
-      <div>
+      </Section>
+      <Section>
         <Header>Stats:</Header>
         <StatBlock>
           <StatIcon src={healthSvg} alt="Health" />
@@ -257,8 +263,8 @@ export default function EditCharForm({ char, onSubmit }) {
             onChange={(value) => handleStatChange(value, "cast")}
           />
         </StatBlock>
-      </div>
-      <div>
+      </Section>
+      <Section>
         <Header htmlFor="description">Description:</Header>
         <textarea
           id="description"
@@ -267,10 +273,14 @@ export default function EditCharForm({ char, onSubmit }) {
             setCharDetails({ ...charDetails, desc: e.target.value })
           }
         ></textarea>
-      </div>
-      <div>
-        <Header>Inventory:</Header>
-        <button onClick={(e) => handleNewInvItem(e)}>+ New Item</button>
+      </Section>
+      <Section>
+        <HeaderContainer>
+          <Header>Inventory:</Header>
+          <Button $small onClick={(e) => handleNewInvItem(e)}>
+            + New Item
+          </Button>
+        </HeaderContainer>
         <ul>
           {charDetails.inventory.map((item, index) => {
             return (
@@ -286,7 +296,7 @@ export default function EditCharForm({ char, onSubmit }) {
             );
           })}
         </ul>
-      </div>
+      </Section>
       <Button $small type="submit">
         Submit
       </Button>
@@ -365,6 +375,14 @@ const FormStyled = styled.form`
   padding: 1em;
 `;
 
+const Section = styled.div`
+  margin: 0.5em 0;
+`;
+
+const HeaderContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
 const Header = styled.label`
   font-family: "Spectral SC", serif;
   font-size: 1.5rem;
