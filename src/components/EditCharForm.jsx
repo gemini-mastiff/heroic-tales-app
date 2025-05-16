@@ -128,7 +128,9 @@ export default function EditCharForm({ char, onSubmit }) {
   return (
     <FormStyled action="" onSubmit={(e) => handleSubmit(e)}>
       <Section>
-        <Header>Info:</Header>
+        <HeaderContainer>
+          <Header>Info:</Header>
+        </HeaderContainer>
         <div>
           <TextInput
             name="Name"
@@ -384,6 +386,7 @@ const Section = styled.div``;
 const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 0.5em 0;
 `;
 const Header = styled.label`
