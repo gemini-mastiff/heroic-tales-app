@@ -222,7 +222,9 @@ export default function EditCharForm({ char, onSubmit }) {
         })}
       </Section>
       <Section>
-        <Header>Stats:</Header>
+        <HeaderContainer>
+          <Header>Stats:</Header>
+        </HeaderContainer>
         <StatBlock>
           <StatIcon src={healthSvg} alt="Health" />
           <p>Health: </p>
@@ -265,7 +267,9 @@ export default function EditCharForm({ char, onSubmit }) {
         </StatBlock>
       </Section>
       <Section>
-        <Header htmlFor="description">Description:</Header>
+        <HeaderContainer>
+          <Header htmlFor="description">Description:</Header>
+        </HeaderContainer>
         <textarea
           id="description"
           value={charDetails.desc}
@@ -375,13 +379,12 @@ const FormStyled = styled.form`
   padding: 1em;
 `;
 
-const Section = styled.div`
-  margin: 0.5em 0;
-`;
+const Section = styled.div``;
 
 const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  margin: 0.5em 0;
 `;
 const Header = styled.label`
   font-family: "Spectral SC", serif;
