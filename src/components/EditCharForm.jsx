@@ -18,6 +18,15 @@ export default function EditCharForm({ char, onSubmit }) {
     onSubmit(charDetails, charDetails.id);
   };
 
+  const handleNewImg = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      setCharDetails({
+        ...charDetails,
+        img: URL.createObjectURL(event.target.files[0]),
+      });
+    }
+  };
+
   const handleNewSkill = (e) => {
     e.preventDefault();
     const newSkills = charDetails.skills;
@@ -161,7 +170,13 @@ export default function EditCharForm({ char, onSubmit }) {
               }
             />
           </div>
-          <CharImg src={char.img ? char.img : noImgSvg} alt="" />
+          <div>
+            <CharImg
+              src={charDetails.img ? charDetails.img : noImgSvg}
+              alt=""
+            />
+            <input type="file" accept="image/*" onChange={handleNewImg} />
+          </div>
         </InfoSection>
       </div>
       <div>
@@ -407,6 +422,8 @@ const StyledInput = styled.input`
 `;
 const CharImg = styled.img`
   height: 120px;
+  width: 120px;
+  object-fit: cover;
   border: 4px solid var(--BG-COLOUR);
 `;
 
