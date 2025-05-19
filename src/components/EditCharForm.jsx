@@ -170,13 +170,19 @@ export default function EditCharForm({ char, onSubmit }) {
               }
             />
           </div>
-          <div>
+          <ImgSection>
             <CharImg
               src={charDetails.img ? charDetails.img : noImgSvg}
               alt=""
             />
-            <input type="file" accept="image/*" onChange={handleNewImg} />
-          </div>
+            <ImgInput
+              id="img"
+              type="file"
+              accept="image/*"
+              onChange={handleNewImg}
+            />
+            <ImgInputLabel htmlFor="img">Choose File</ImgInputLabel>
+          </ImgSection>
         </InfoSection>
       </div>
       <div>
@@ -420,11 +426,37 @@ const StyledInput = styled.input`
   border-radius: 100px;
   padding: 0.25em 0.5em;
 `;
+
+const ImgSection = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.8em;
+`;
 const CharImg = styled.img`
   height: 120px;
   width: 120px;
   object-fit: cover;
   border: 4px solid var(--BG-COLOUR);
+`;
+const ImgInput = styled.input`
+  display: none;
+`;
+const ImgInputLabel = styled.label`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #7f5af0;
+  color: var(--PRIMARY-TEXT);
+  font-family: inherit;
+  font-size: 0.8em;
+  border: none;
+  padding: 0.5em 1em;
+  border-radius: 100px;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.9;
+  }
 `;
 
 const SkillItem = styled.div`
