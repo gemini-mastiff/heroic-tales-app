@@ -151,6 +151,8 @@ const HeaderButtons = styled.div`
 `;
 const CharImg = styled.img`
   height: 120px;
+  width: 120px;
+  object-fit: cover;
   border: 4px solid var(--BG-COLOUR);
 `;
 
