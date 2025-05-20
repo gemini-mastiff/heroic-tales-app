@@ -414,7 +414,7 @@ const Header = styled.label`
 const InfoSection = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: end;
 `;
 
 const InputDiv = styled.div`
