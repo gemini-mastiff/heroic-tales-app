@@ -501,8 +501,10 @@ const AbilityName = styled.p`
 `;
 
 const StatBlock = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 30px 80px 50px;
   gap: 0.5em;
+  margin: 0.25em 0;
 `;
 const StatIcon = styled.img`
   width: 30px;
