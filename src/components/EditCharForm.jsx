@@ -320,10 +320,10 @@ export default function EditCharForm({ char, onSubmit }) {
             + New Item
           </Button>
         </HeaderContainer>
-        <ul>
+        <InventoryList>
           {charDetails.inventory.map((item, index) => {
             return (
-              <li key={index}>
+              <InventoryItem key={index}>
                 <StyledInput
                   value={item}
                   onChange={(e) => handleInvChange(e.target.value, index)}
@@ -331,11 +331,12 @@ export default function EditCharForm({ char, onSubmit }) {
                 <Button $small onClick={(e) => handleInvDel(e, index)}>
                   Del
                 </Button>
-              </li>
+              </InventoryItem>
             );
           })}
-        </ul>
+        </InventoryList>
       </div>
+      <LineBreak />
       <Button $small type="submit">
         Submit
       </Button>
@@ -519,4 +520,14 @@ const TextBox = styled.textarea`
   border-radius: 1em;
   padding: 0.5em 0.75em;
   resize: none;
+`;
+
+const InventoryList = styled.ul`
+  list-style: none;
+`;
+const InventoryItem = styled.li`
+  width: 100%;
+  display: flex;
+  gap: 0.5em;
+  margin: 0.5em 0;
 `;
