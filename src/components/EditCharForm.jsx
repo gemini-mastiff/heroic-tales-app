@@ -361,7 +361,7 @@ function AbilityItem({ ability, onNameChange, onDescChange, onDel }) {
   };
 
   return (
-    <AbilityItemStyled key={ability.id}>
+    <AbilityItemStyled>
       <AbilityHeader>
         {isEdit ? (
           <StyledInput
@@ -416,7 +416,6 @@ const InfoSection = styled.div`
   justify-content: space-between;
   align-items: end;
 `;
-
 const InputDiv = styled.div`
   display: flex;
   flex-direction: column;
@@ -434,7 +433,6 @@ const StyledInput = styled.input`
   border-radius: 100px;
   padding: 0.25em 0.5em;
 `;
-
 const ImgSection = styled.div`
   display: flex;
   align-items: center;
