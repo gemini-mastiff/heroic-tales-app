@@ -304,13 +304,13 @@ export default function EditCharForm({ char, onSubmit }) {
         <HeaderContainer>
           <Header htmlFor="description">Description:</Header>
         </HeaderContainer>
-        <textarea
+        <TextBox
           id="description"
           value={charDetails.desc}
           onChange={(e) =>
             setCharDetails({ ...charDetails, desc: e.target.value })
           }
-        ></textarea>
+        ></TextBox>
       </div>
       <hr />
       <div>
@@ -380,10 +380,10 @@ function AbilityItem({ ability, onNameChange, onDescChange, onDel }) {
         </Button>
       </AbilityHeader>
       {isEdit ? (
-        <textarea
+        <TextBox
           value={ability.desc}
           onChange={(e) => onDescChange(e.target.value, ability.id)}
-        ></textarea>
+        ></TextBox>
       ) : (
         <p>{ability.desc}</p>
       )}
@@ -493,7 +493,19 @@ const StatBlock = styled.div`
   display: flex;
   gap: 0.5em;
 `;
-
 const StatIcon = styled.img`
   width: 30px;
+`;
+
+const TextBox = styled.textarea`
+  background-color: #fff;
+  color: var(--BG-COLOUR);
+  font-family: "DM Sans", sans-serif;
+  font-size: 1rem;
+  width: 93.5%;
+  field-sizing: content;
+  border: none;
+  border-radius: 1em;
+  padding: 0.5em 0.75em;
+  resize: none;
 `;
