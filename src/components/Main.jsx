@@ -9,6 +9,7 @@ import Dropdown from "./Dropdown.jsx";
 import DiceBox from "./DiceBox.jsx";
 import DialogModal from "./DialogModal.jsx";
 import EditCharForm from "./EditCharForm.jsx";
+import DelCharModal from "./DelCharModal.jsx";
 
 export default function Main() {
   const [charArr, setCharArr] = useState(getCharArr());
@@ -164,11 +165,11 @@ export default function Main() {
         </DialogModal>
         {currChar && (
           <DialogModal isOpen={delChar} onClose={setDelChar}>
-            <p>Are you sure you want to delete {charArr[charId].name}?</p>
-            <button onClick={() => setDelChar(false)}>No</button>
-            <button onClick={(e) => handleCharDel(e, charId)}>
-              Yes, I'm sure
-            </button>
+            <DelCharModal
+              char={currChar}
+              setDelChar={setDelChar}
+              handleCharDel={handleCharDel}
+            />
           </DialogModal>
         )}
       </WidthContainer>
