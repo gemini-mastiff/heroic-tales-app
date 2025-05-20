@@ -185,7 +185,7 @@ export default function EditCharForm({ char, onSubmit }) {
           </ImgSection>
         </InfoSection>
       </div>
-      <hr />
+      <LineBreak />
       <div>
         <HeaderContainer>
           <Header>Skills:</Header>
@@ -228,7 +228,7 @@ export default function EditCharForm({ char, onSubmit }) {
           );
         })}
       </div>
-      <hr />
+      <LineBreak />
       <div>
         <HeaderContainer>
           <Header>Abilities:</Header>
@@ -248,7 +248,7 @@ export default function EditCharForm({ char, onSubmit }) {
           );
         })}
       </div>
-      <hr />
+      <LineBreak />
       <div>
         <HeaderContainer>
           <Header>Stats:</Header>
@@ -299,7 +299,7 @@ export default function EditCharForm({ char, onSubmit }) {
           />
         </StatBlock>
       </div>
-      <hr />
+      <LineBreak />
       <div>
         <HeaderContainer>
           <Header htmlFor="description">Description:</Header>
@@ -312,7 +312,7 @@ export default function EditCharForm({ char, onSubmit }) {
           }
         ></TextBox>
       </div>
-      <hr />
+      <LineBreak />
       <div>
         <HeaderContainer>
           <Header>Inventory:</Header>
@@ -396,12 +396,15 @@ const FormStyled = styled.form`
   overflow-y: auto;
   padding: 1em;
 `;
+const LineBreak = styled.hr`
+  margin: 1em 0;
+`;
 
 const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0.75em 0;
+  margin-bottom: 0.75em;
 `;
 const Header = styled.label`
   font-family: "Spectral SC", serif;
