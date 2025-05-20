@@ -8,6 +8,15 @@ import injurySvg from "../assets/injury.svg";
 import shieldSvg from "../assets/shield.svg";
 import magicSvg from "../assets/magic.svg";
 
+function toBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = (error) => reject(error);
+  });
+}
+
 export default function EditCharForm({ char, onSubmit }) {
   const [charDetails, setCharDetails] = useState({ ...char });
 
@@ -18,11 +27,13 @@ export default function EditCharForm({ char, onSubmit }) {
     onSubmit(charDetails, charDetails.id);
   };
 
-  const handleNewImg = (e) => {
+  const handleNewImg = async (e) => {
     if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      const base64 = await toBase64(file);
       setCharDetails({
         ...charDetails,
-        img: URL.createObjectURL(event.target.files[0]),
+        img: base64,
       });
     }
   };
