@@ -185,6 +185,7 @@ export default function EditCharForm({ char, onSubmit }) {
           </ImgSection>
         </InfoSection>
       </div>
+      <hr />
       <div>
         <HeaderContainer>
           <Header>Skills:</Header>
@@ -227,6 +228,7 @@ export default function EditCharForm({ char, onSubmit }) {
           );
         })}
       </div>
+      <hr />
       <div>
         <HeaderContainer>
           <Header>Abilities:</Header>
@@ -246,6 +248,7 @@ export default function EditCharForm({ char, onSubmit }) {
           );
         })}
       </div>
+      <hr />
       <div>
         <HeaderContainer>
           <Header>Stats:</Header>
@@ -296,6 +299,7 @@ export default function EditCharForm({ char, onSubmit }) {
           />
         </StatBlock>
       </div>
+      <hr />
       <div>
         <HeaderContainer>
           <Header htmlFor="description">Description:</Header>
@@ -308,6 +312,7 @@ export default function EditCharForm({ char, onSubmit }) {
           }
         ></textarea>
       </div>
+      <hr />
       <div>
         <HeaderContainer>
           <Header>Inventory:</Header>
@@ -356,7 +361,7 @@ function AbilityItem({ ability, onNameChange, onDescChange, onDel }) {
   };
 
   return (
-    <div key={ability.id}>
+    <AbilityItemStyled key={ability.id}>
       <AbilityHeader>
         {isEdit ? (
           <StyledInput
@@ -365,7 +370,7 @@ function AbilityItem({ ability, onNameChange, onDescChange, onDel }) {
             onChange={(e) => onNameChange(e.target.value, ability.id)}
           />
         ) : (
-          <p>{ability.name}</p>
+          <AbilityName>{ability.name}</AbilityName>
         )}
         <Button $small onClick={(e) => handleEdit(e)}>
           {isEdit ? "Save" : "Edit"}
@@ -382,7 +387,7 @@ function AbilityItem({ ability, onNameChange, onDescChange, onDel }) {
       ) : (
         <p>{ability.desc}</p>
       )}
-    </div>
+    </AbilityItemStyled>
   );
 }
 
@@ -469,9 +474,19 @@ const RatingContainer = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
 `;
 
+const AbilityItemStyled = styled.div`
+  margin-bottom: 0.5em;
+`;
 const AbilityHeader = styled.div`
   display: flex;
+  align-items: center;
   gap: 1em;
+  margin-bottom: 0.5em;
+`;
+const AbilityName = styled.p`
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-decoration: underline;
 `;
 
 const StatBlock = styled.div`
