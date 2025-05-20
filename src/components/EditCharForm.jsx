@@ -201,7 +201,7 @@ export default function EditCharForm({ char, onSubmit }) {
                 onChange={(e) => handleSkillName(e.target.value, skill.id)}
               />
               <RatingContainer>
-                <Button
+                <RatingButton
                   $small
                   disabled={skill.rating <= 1}
                   onClick={(e) =>
@@ -209,9 +209,9 @@ export default function EditCharForm({ char, onSubmit }) {
                   }
                 >
                   -
-                </Button>
+                </RatingButton>
                 <p>{skill.rating}</p>
-                <Button
+                <RatingButton
                   $small
                   disabled={skill.rating >= 3}
                   onClick={(e) =>
@@ -219,7 +219,7 @@ export default function EditCharForm({ char, onSubmit }) {
                   }
                 >
                   +
-                </Button>
+                </RatingButton>
               </RatingContainer>
               <Button $small onClick={(e) => handelSkillDel(e, skill.id)}>
                 Del
@@ -466,12 +466,20 @@ const ImgInputLabel = styled.label`
 
 const SkillItem = styled.div`
   display: grid;
-  grid-template-columns: 1fr auto 40px;
+  grid-template-columns: 1fr auto auto;
+  gap: 1em;
+  margin: 0.5em 0;
 `;
-
 const RatingContainer = styled.div`
   display: grid;
+  text-align: center;
+  align-items: center;
   grid-template-columns: 1fr 1fr 1fr;
+`;
+const RatingButton = styled(Button)`
+  height: 25px;
+  width: 25px;
+  padding: 0;
 `;
 
 const AbilityItemStyled = styled.div`
