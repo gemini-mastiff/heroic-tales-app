@@ -401,7 +401,7 @@ const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0.5em 0;
+  margin: 0.75em 0;
 `;
 const Header = styled.label`
   font-family: "Spectral SC", serif;
