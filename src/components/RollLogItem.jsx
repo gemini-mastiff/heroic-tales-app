@@ -49,5 +49,8 @@ const SuccessLevel = styled.span`
 `;
 
 const NumSpan = styled.span`
-  color: ${(props) => (props.$success === true ? "green" : "red")};
+  text-shadow: ${(props) =>
+    props.$success === true
+      ? "rgba(44,182,125,1) 0px 0px 10px,rgba(44,182,125,1) 0px 0px 10px, rgba(44,182,125,1) 0px 0px 10px, rgba(44,182,125,1) 0px 0px 10px;"
+      : "rgba(239,69,101,1) 0px 0px 10px, rgba(239,69,101,1) 0px 0px 10px, rgba(239,69,101,1) 0px 0px 10px, rgba(239,69,101,1) 0px 0px 10px;"};
 `;
