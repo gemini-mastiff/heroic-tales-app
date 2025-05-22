@@ -24,9 +24,6 @@ export default function Main() {
     localStorage.setItem("charId", JSON.stringify(charId));
   }, [charArr, charId]);
 
-  console.log(charArr);
-  console.log(rollLog);
-
   const currChar = charArr.find((char) => char.id === charId);
 
   const skillTotal = currChar
