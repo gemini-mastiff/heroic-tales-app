@@ -7,22 +7,22 @@ export default function Footer() {
       <WidthContainer>
         <p>
           Based on{" "}
-          <a
+          <Link
             href="https://squidhead-games.itch.io/heroic-tales"
             target="_blank"
           >
             Heroic Tales
-          </a>{" "}
+          </Link>{" "}
           by Squidhead Games
         </p>
         <p>
           View the source on{" "}
-          <a
+          <Link
             href="https://github.com/gemini-mastiff/heroic-tales-app"
             target="_blank"
           >
             Github
-          </a>
+          </Link>
         </p>
         <p>&#169; 2025 Joseph Webb</p>
       </WidthContainer>
@@ -33,5 +33,13 @@ export default function Footer() {
 const FooterStyled = styled.footer`
   background-color: var(--MAIN-COLOUR);
   text-align: center;
-  padding: 0.5em 0;
+  padding: 0.75em 0;
+  font-size: 1rem;
+`;
+
+const Link = styled.a`
+  color: #7f5af0;
+  &:active {
+    color: #2cb67d;
+  }
 `;
