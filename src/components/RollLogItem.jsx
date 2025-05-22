@@ -25,27 +25,39 @@ export default function RollLogItem({ roll }) {
 
   return (
     <ItemStyled>
-      <p>
-        <SuccessLevel>{roll.successLevel}</SuccessLevel>{" "}
-        {roll.successNum > 0 &&
-          `(${roll.successNum} ${
-            roll.successNum > 1 ? "successes" : "success"
-          })`}
-      </p>
-      <p>
-        ({checkResultsArr})
-        {skillResults.length > 0 && <> ({skillResultsArr})</>}
-      </p>
+      <ItemHeader>{roll.char}</ItemHeader>
+      <SmallText>
+        <p>
+          <SuccessLevel>{roll.successLevel}</SuccessLevel>{" "}
+          {roll.successNum > 0 &&
+            `(${roll.successNum} ${
+              roll.successNum > 1 ? "successes" : "success"
+            })`}
+        </p>
+        <p>
+          ({checkResultsArr})
+          {skillResults.length > 0 && <> ({skillResultsArr})</>}
+        </p>
+      </SmallText>
     </ItemStyled>
   );
 }
 
-const ItemStyled = styled.div``;
+const ItemStyled = styled.div`
+  margin: 0.5em 0;
+`;
 
-const ItemHeader = styled.p``;
+const ItemHeader = styled.p`
+  font-family: "Spectral SC", serif;
+  font-weight: bold;
+  font-style: italic;
+`;
 
 const SuccessLevel = styled.span`
   font-weight: bold;
+`;
+const SmallText = styled.div`
+  font-size: 1rem;
 `;
 
 const NumSpan = styled.span`

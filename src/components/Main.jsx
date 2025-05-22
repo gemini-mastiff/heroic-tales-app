@@ -25,6 +25,7 @@ export default function Main() {
   }, [charArr, charId]);
 
   console.log(charArr);
+  console.log(rollLog);
 
   const currChar = charArr.find((char) => char.id === charId);
 
@@ -65,6 +66,7 @@ export default function Main() {
 
   const handleResults = (checkNum) => {
     const newResults = rollCalc(checkNum + 1, skillTotal);
+    newResults["char"] = currChar.name;
     let newRollLog;
     if (rollLog.length >= 20) {
       newRollLog = rollLog.slice(1);
