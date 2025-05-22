@@ -2,6 +2,16 @@ import { useState } from "react";
 import styled from "styled-components";
 import Button from "./Button.jsx";
 
+function getGlow(result, successThreshold) {
+  if (result === 1) {
+    return "0px 0px 12px 8px rgba(239,69,100,0.73);";
+  } else if (result >= successThreshold) {
+    return "0px 0px 12px 8px rgba(44,182,125,0.73);";
+  } else {
+    return null;
+  }
+}
+
 export default function DiceBox({
   skillTotal,
   results,
@@ -28,6 +38,7 @@ export default function DiceBox({
           key={crypto.randomUUID()}
           $isSelected={i < checkResults.length}
           onClick={() => handleDifficulty(i)}
+          $glow={getGlow(checkResults[i], 5)}
         >
           {i < checkResults.length ? checkResults[i] : "?"}
         </CheckDice>
@@ -36,7 +47,11 @@ export default function DiceBox({
 
     for (let i = 0; i < skillResults.length; i++) {
       skillDice.push(
-        <Dice key={crypto.randomUUID()} $isSelected={true}>
+        <Dice
+          key={crypto.randomUUID()}
+          $isSelected={true}
+          $glow={getGlow(skillResults[i], 6)}
+        >
           {skillResults[i]}
         </Dice>
       );
@@ -119,6 +134,7 @@ const Dice = styled.div`
   text-align: center;
   vertical-align: middle;
   line-height: 50px;
+  box-shadow: ${(props) => props.$glow};
 `;
 const CheckDice = styled(Dice)`
   &:hover {
