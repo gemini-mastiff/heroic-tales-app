@@ -20,8 +20,6 @@ function toBase64(file) {
 export default function EditCharForm({ char, onSubmit }) {
   const [charDetails, setCharDetails] = useState({ ...char });
 
-  console.log(charDetails);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(charDetails, charDetails.id);
