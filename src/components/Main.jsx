@@ -184,7 +184,7 @@ const MainStyled = styled.main`
 `;
 
 const GameGrid = styled.div`
-  max-height: 955px;
+  max-height: 825px;
   display: flex;
   align-items: stretch;
   padding: 1em 0;
