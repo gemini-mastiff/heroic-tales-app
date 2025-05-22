@@ -4,9 +4,9 @@ import Button from "./Button.jsx";
 
 function getGlow(result, successThreshold) {
   if (result === 1) {
-    return "0px 0px 12px 8px rgba(239,69,100,0.73);";
+    return "0px 0px 12px 8px rgba(239,69,100,0.73), inset 0px 0px 12px 8px rgba(239,69,100,0.73);";
   } else if (result >= successThreshold) {
-    return "0px 0px 12px 8px rgba(44,182,125,0.73);";
+    return "0px 0px 12px 8px rgba(44,182,125,0.73), inset 0px 0px 12px 8px rgba(44,182,125,0.73);";
   } else {
     return null;
   }
