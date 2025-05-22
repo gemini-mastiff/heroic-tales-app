@@ -6,6 +6,7 @@ import hitsSvg from "../assets/hit.svg";
 import injurySvg from "../assets/injury.svg";
 import shieldSvg from "../assets/shield.svg";
 import magicSvg from "../assets/magic.svg";
+import chevronSvg from "../assets/chevron.svg";
 import Button from "./Button.jsx";
 
 export default function CharSheet({
@@ -70,7 +71,7 @@ export default function CharSheet({
           {char.abilities.length > 0 ? (
             <List>
               {char.abilities.map((ability) => (
-                <li key={crypto.randomUUID()}>{ability.name}</li>
+                <AbilityItem key={crypto.randomUUID()} ability={ability} />
               ))}
             </List>
           ) : (
@@ -124,6 +125,20 @@ export default function CharSheet({
         {isOpen ? "Show Less" : "Show More"}
       </Button>
     </CharSheetStyled>
+  );
+}
+
+function AbilityItem({ ability }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div>
+      <AbilityHeader onClick={() => setIsOpen(!isOpen)}>
+        <p>{ability.name}</p>
+        <AbilityChevron src={chevronSvg} $isOpen={isOpen} />
+      </AbilityHeader>
+      {isOpen && <AbilityText>{ability.desc}</AbilityText>}
+    </div>
   );
 }
 
@@ -197,9 +212,28 @@ const SkillButton = styled.button`
     opacity: 0.9;
   }
 `;
+
 const CharAbilities = styled.div`
   flex: 2;
   background-color: var(--MAIN-COLOUR);
+`;
+const AbilityHeader = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.2em;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.9;
+  }
+`;
+const AbilityChevron = styled.img`
+  filter: invert(100%) sepia(0%) saturate(2707%) hue-rotate(188deg)
+    brightness(106%) contrast(80%);
+  width: 20px;
+  transform: ${(props) => (props.$isOpen ? "rotate(90deg)" : null)};
+`;
+const AbilityText = styled.p`
+  font-size: 1rem;
 `;
 
 const CharNums = styled.div``;
