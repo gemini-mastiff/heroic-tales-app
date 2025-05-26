@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import RollLogItem from "./RollLogItem.jsx";
 
-export default function RollLog({ rollLog }) {
+export default function RollLog({ rollLog, height }) {
   return (
-    <RollLogContainer>
+    <RollLogContainer $height={height}>
       {rollLog.length < 1
         ? "Make some Rolls!"
         : rollLog.map((item, i, arr) => {
@@ -26,7 +26,7 @@ export default function RollLog({ rollLog }) {
 
 const RollLogContainer = styled.div`
   flex: 1;
-  max-height: 100%;
+  height: ${(props) => props.$height};
   background-color: var(--MAIN-COLOUR);
   display: flex;
   flex-direction: column;

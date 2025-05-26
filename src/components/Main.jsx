@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { getCharArr, getCharId } from "../js/storageMethods.js";
 import rollCalc from "../js/rollCalc.js";
 import WidthContainer from "./WidthContainer.jsx";
@@ -14,10 +14,18 @@ import DelCharModal from "./DelCharModal.jsx";
 export default function Main() {
   const [charArr, setCharArr] = useState(getCharArr());
   const [charId, setCharId] = useState(getCharId());
+  const [charAccordion, setCharAccordion] = useState(false);
   const [editChar, setEditChar] = useState(false);
   const [delChar, setDelChar] = useState(false);
   const [results, setResults] = useState(false);
   const [rollLog, setRollLog] = useState([]);
+
+  const heightRef = useRef(null);
+  const [gridHeight, setGridHeight] = useState(null);
+
+  useEffect(() => {
+    setGridHeight(heightRef.current.clientHeight);
+  }, [charAccordion]);
 
   useEffect(() => {
     localStorage.setItem("charArr", JSON.stringify(charArr));
@@ -65,7 +73,7 @@ export default function Main() {
     const newResults = rollCalc(checkNum + 1, skillTotal);
     newResults["char"] = currChar.name;
     let newRollLog;
-    if (rollLog.length >= 20) {
+    if (rollLog.length >= 10) {
       newRollLog = rollLog.slice(1);
     } else newRollLog = rollLog;
     setResults(newResults);
@@ -105,6 +113,10 @@ export default function Main() {
     );
     setEditChar(false);
   };
+  const handleCharAccordion = (e) => {
+    e.preventDefault();
+    setCharAccordion(!charAccordion);
+  };
   const handleCharChange = (id) => {
     setCharId(id);
     resetSkills();
@@ -120,43 +132,47 @@ export default function Main() {
     <MainStyled>
       <WidthContainer>
         <GameGrid>
-          <RollLog rollLog={rollLog} />
+          <RollLog rollLog={rollLog} height={`${gridHeight}px`} />
           <CharDiceContainer>
-            <CharSheetContainer>
-              <Dropdown value="Choose Character">
-                {charArr.map((char) => {
-                  return (
-                    <DropdownItem
-                      key={char.id}
-                      onClick={() => handleCharChange(char.id)}
-                    >
-                      {char.name}
-                    </DropdownItem>
-                  );
-                })}
-                <DropdownItem onClick={handleNewChar}>
-                  + New Character
-                </DropdownItem>
-              </Dropdown>
-              {currChar ? (
-                <CharSheet
-                  char={currChar}
-                  handleSkill={handleSkill}
-                  skillTotal={skillTotal}
-                  setEditChar={setEditChar}
-                  setDelChar={setDelChar}
-                />
-              ) : (
-                "Add a character!"
-              )}
-            </CharSheetContainer>
-            <DiceBox
-              skillTotal={skillTotal}
-              results={results}
-              resetSkills={resetSkills}
-              handleResults={handleResults}
-              setResults={setResults}
-            />
+            <InnerCharDiceContainer ref={heightRef}>
+              <CharSheetContainer>
+                <Dropdown value="Choose Character">
+                  {charArr.map((char) => {
+                    return (
+                      <DropdownItem
+                        key={char.id}
+                        onClick={() => handleCharChange(char.id)}
+                      >
+                        {char.name}
+                      </DropdownItem>
+                    );
+                  })}
+                  <DropdownItem onClick={handleNewChar}>
+                    + New Character
+                  </DropdownItem>
+                </Dropdown>
+                {currChar ? (
+                  <CharSheet
+                    char={currChar}
+                    handleSkill={handleSkill}
+                    skillTotal={skillTotal}
+                    setEditChar={setEditChar}
+                    setDelChar={setDelChar}
+                    handleCharAccordion={handleCharAccordion}
+                    isOpen={charAccordion}
+                  />
+                ) : (
+                  "Add a character!"
+                )}
+              </CharSheetContainer>
+              <DiceBox
+                skillTotal={skillTotal}
+                results={results}
+                resetSkills={resetSkills}
+                handleResults={handleResults}
+                setResults={setResults}
+              />
+            </InnerCharDiceContainer>
           </CharDiceContainer>
         </GameGrid>
         <DialogModal isOpen={editChar} onClose={setEditChar}>
@@ -181,7 +197,6 @@ const MainStyled = styled.main`
 `;
 
 const GameGrid = styled.div`
-  max-height: 825px;
   display: flex;
   align-items: stretch;
   padding: 1em 0;
@@ -191,6 +206,9 @@ const GameGrid = styled.div`
 
 const CharDiceContainer = styled.div`
   flex: 2;
+`;
+
+const InnerCharDiceContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1em;

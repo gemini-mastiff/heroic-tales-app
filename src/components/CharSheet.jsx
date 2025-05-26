@@ -15,14 +15,10 @@ export default function CharSheet({
   skillTotal,
   setEditChar,
   setDelChar,
+  handleCharAccordion,
+  isOpen,
 }) {
-  const [isOpen, setIsOpen] = useState(false);
   const disableSkills = skillTotal >= 6;
-
-  const handleAccordion = (e) => {
-    e.preventDefault();
-    setIsOpen(!isOpen);
-  };
 
   return (
     <CharSheetStyled>
@@ -121,7 +117,7 @@ export default function CharSheet({
           )}
         </CharInfo>
       )}
-      <Button $small onClick={(e) => handleAccordion(e)}>
+      <Button $small onClick={(e) => handleCharAccordion(e)}>
         {isOpen ? "Show Less" : "Show More"}
       </Button>
     </CharSheetStyled>
