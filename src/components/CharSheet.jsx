@@ -101,7 +101,11 @@ export default function CharSheet({
         <CharInfo>
           <CharDesc>
             <CharHeading>Description</CharHeading>
-            <p>{char.desc}</p>
+            {char.desc.length > 0 ? (
+              <p>{char.desc}</p>
+            ) : (
+              <p>Add character's description here!</p>
+            )}
           </CharDesc>
 
           <CharInv>

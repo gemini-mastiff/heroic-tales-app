@@ -108,7 +108,7 @@ export default function Main() {
         armour: 0,
         cast: 0,
       },
-      desc: "Add character's description here!",
+      desc: "",
       inventory: [],
       img: null,
     };
