@@ -88,8 +88,19 @@ export default function Main() {
       race: "Race",
       class: "Class",
       subclass: "Subclass",
-      skills: [],
-      abilities: [],
+      skills: [
+        { id: 0, name: "New Skill", rating: 2, active: false },
+        { id: 1, name: "New Skill", rating: 1, active: false },
+        { id: 2, name: "New Skill", rating: 1, active: false },
+        { id: 3, name: "New Skill", rating: 1, active: false },
+      ],
+      abilities: [
+        {
+          id: 0,
+          name: "New Ability",
+          desc: "Enter a description here!",
+        },
+      ],
       stats: {
         hits: 0,
         health: 5,
