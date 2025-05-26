@@ -104,7 +104,7 @@ export default function CharSheet({
             {char.desc.length > 0 ? (
               <p>{char.desc}</p>
             ) : (
-              <p>Add character's description here!</p>
+              <Italic>No description</Italic>
             )}
           </CharDesc>
 
@@ -117,7 +117,7 @@ export default function CharSheet({
                 })}
               </InvList>
             ) : (
-              <p>Add items to your character's inventory!</p>
+              <Italic>Empty</Italic>
             )}
           </CharInv>
         </CharInfo>
@@ -138,7 +138,15 @@ function AbilityItem({ ability }) {
         <p>{ability.name}</p>
         <AbilityChevron src={chevronSvg} $isOpen={isOpen} />
       </AbilityHeader>
-      {isOpen && <AbilityText>{ability.desc}</AbilityText>}
+      {isOpen && (
+        <AbilityText>
+          {ability.desc.length > 0 ? (
+            ability.desc
+          ) : (
+            <Italic>No description</Italic>
+          )}
+        </AbilityText>
+      )}
     </div>
   );
 }
@@ -233,7 +241,7 @@ const AbilityChevron = styled.img`
   width: 20px;
   transform: ${(props) => (props.$isOpen ? "rotate(90deg)" : null)};
 `;
-const AbilityText = styled.p`
+const AbilityText = styled.div`
   font-size: 1rem;
 `;
 
@@ -258,3 +266,7 @@ const InvList = styled.ul`
   margin: 0;
 `;
 const InvItem = styled.li``;
+
+const Italic = styled.p`
+  font-style: italic;
+`;
