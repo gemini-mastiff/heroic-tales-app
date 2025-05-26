@@ -98,7 +98,7 @@ export default function Main() {
         {
           id: 0,
           name: "New Ability",
-          desc: "Enter a description here!",
+          desc: "",
         },
       ],
       stats: {
