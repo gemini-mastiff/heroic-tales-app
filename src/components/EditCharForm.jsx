@@ -393,6 +393,7 @@ function AbilityItem({ ability, onNameChange, onDescChange, onDel }) {
       {isEdit ? (
         <TextBox
           value={ability.desc}
+          placeholder="Add ability description here!"
           onChange={(e) => onDescChange(e.target.value, ability.id)}
         ></TextBox>
       ) : (
