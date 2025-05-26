@@ -316,6 +316,7 @@ export default function EditCharForm({ char, onSubmit }) {
         <TextBox
           id="description"
           value={charDetails.desc}
+          placeholder="Add character's description here!"
           onChange={(e) =>
             setCharDetails({ ...charDetails, desc: e.target.value })
           }
