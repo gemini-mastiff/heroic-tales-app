@@ -397,7 +397,7 @@ function AbilityItem({ ability, onNameChange, onDescChange, onDel }) {
           onChange={(e) => onDescChange(e.target.value, ability.id)}
         ></TextBox>
       ) : (
-        <p>{ability.desc}</p>
+        <p>{ability.desc.length > 0 ? ability.desc : "No description"}</p>
       )}
     </AbilityItemStyled>
   );
