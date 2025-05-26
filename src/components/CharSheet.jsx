@@ -99,22 +99,23 @@ export default function CharSheet({
       </CharStats>
       {isOpen && (
         <CharInfo>
-          {char.desc && (
-            <CharDesc>
-              <CharHeading>Description</CharHeading>
-              <p>{char.desc}</p>
-            </CharDesc>
-          )}
-          {char.inventory.length > 0 && (
-            <CharInv>
-              <CharHeading>Inventory</CharHeading>
+          <CharDesc>
+            <CharHeading>Description</CharHeading>
+            <p>{char.desc}</p>
+          </CharDesc>
+
+          <CharInv>
+            <CharHeading>Inventory</CharHeading>
+            {char.inventory.length > 0 ? (
               <InvList>
                 {char.inventory.map((item) => {
                   return <InvItem key={crypto.randomUUID()}>{item}</InvItem>;
                 })}
               </InvList>
-            </CharInv>
-          )}
+            ) : (
+              <p>Add items to your character's inventory!</p>
+            )}
+          </CharInv>
         </CharInfo>
       )}
       <Button $small onClick={(e) => handleCharAccordion(e)}>
