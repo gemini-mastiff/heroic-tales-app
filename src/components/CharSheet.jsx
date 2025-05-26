@@ -161,6 +161,7 @@ const CharHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  padding: 0.5em 0;
 `;
 const CharName = styled.h2`
   font-family: "Spectral SC", serif;
