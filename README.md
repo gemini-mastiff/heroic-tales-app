@@ -49,7 +49,11 @@ This is an ongoing project. Some things I plan to improve:
 
 ## 📷 Screenshots
 
-**To be added**
+![Full Page Screenshot](screenshots/full-screen.png)
+
+![Character Editor Screenshot](screenshots/character-editor.png)
+
+![Dice Roll Example Gif](screenshots/dice-roll.gif)
 
 ---
 
