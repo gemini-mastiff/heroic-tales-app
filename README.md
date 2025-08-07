@@ -13,16 +13,16 @@ Built as a portfolio project, this was my first fully self-led app — from roug
 - **React** (via Vite)
 - **styled-components** for scoped component styling
 - **Headless UI** for accessible modals/dialogs
-- Local state and **`localStorage`** for persistent storage
+- Local state and localStorage for persistent storage
 - Deployed on **Netlify**
 
 ---
 
 ## 🔍 Features
 
-- A **dice pool builder** for custom roll combinations
-- Editable **character sheets** with an accordion-style layout
-- A **log of previous rolls**, with clear success/failure highlighting
+- A dice pool builder for custom roll combinations
+- Editable character sheets with an accordion-style layout
+- A log of previous rolls, with clear success/failure highlighting
 - Automatic saving of character and roll data in local storage
 
 ---
@@ -49,9 +49,15 @@ This is an ongoing project. Some things I plan to improve:
 
 ## 📷 Screenshots
 
+App in full:
+
 ![Full Page Screenshot](screenshots/full-screen.png)
 
+Character Editor:
+
 ![Character Editor Screenshot](screenshots/character-editor.png)
+
+Dice Roll Example:
 
 ![Dice Roll Example Gif](screenshots/dice-roll.gif)
 
