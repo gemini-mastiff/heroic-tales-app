@@ -1,14 +1,14 @@
-# ⚔ Heroic Tales App
+# Heroic Tales App
 
 This is a companion app for the tabletop RPG [Heroic Tales](https://squidhead-games.itch.io/heroic-tales) by Squidhead Games. It includes everything you need to run a game session: editable character sheets, a dice roller with pooling, and a roll log that tracks your results.
 
 Built as a portfolio project, this was my first fully self-led app — from rough sketch to working product.
 
-🔗 **Live project**: [https://heroic-tales-app.netlify.app](https://heroic-tales-app.netlify.app)
+**Live project**: [https://heroic-tales-app.netlify.app](https://heroic-tales-app.netlify.app)
 
 ---
 
-## 🧰 Tech Stack
+## Tech Stack
 
 - **React** (via Vite)
 - **styled-components** for scoped component styling
@@ -18,7 +18,7 @@ Built as a portfolio project, this was my first fully self-led app — from roug
 
 ---
 
-## 🔍 Features
+## Features
 
 - A dice pool builder for custom roll combinations
 - Editable character sheets with an accordion-style layout
@@ -27,7 +27,7 @@ Built as a portfolio project, this was my first fully self-led app — from roug
 
 ---
 
-## 💡 Background
+## Background
 
 This project started as a way to push my React skills and to take a project from an idea all the way to production. I wanted to practice:
 
@@ -37,7 +37,7 @@ This project started as a way to push my React skills and to take a project from
 
 ---
 
-## 🚧 Future Improvements
+## Future Improvements
 
 This is an ongoing project. Some things I plan to improve:
 - Building a responsive layout (for mobile)
@@ -63,7 +63,7 @@ Dice Roll Example:
 
 ---
 
-## 🙏 Credits
+## Credits
 
 This app is a fan-made tool built for [Heroic Tales](https://squidhead-games.itch.io/heroic-tales) by Squidhead Games.  
 All credit for the game design goes to them.
