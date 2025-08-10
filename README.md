@@ -47,7 +47,7 @@ This is an ongoing project. Some things I plan to improve:
 
 ---
 
-## 📷 Screenshots
+## Screenshots
 
 App in full:
 
