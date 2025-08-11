@@ -69,7 +69,7 @@ This is an ongoing project. Some things I plan to improve:
 This app is a fan-made tool built for [Heroic Tales](https://squidhead-games.itch.io/heroic-tales) by [Squidhead Games](https://squidhead-games.itch.io/).  
 All credit for the game design goes to them.
 
-## 🔗 GitHub + Contact
+## GitHub + Contact
 
 - Source code: [github.com/gemini-mastiff/heroic-tales-app](https://github.com/gemini-mastiff/heroic-tales-app)
-- Feel free to open issues or suggestions — always happy to get feedback!
+- Feel free to open issues or suggestions!
