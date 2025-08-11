@@ -1,31 +1,15 @@
 # Heroic Tales App
 
-This is a companion app for the tabletop RPG [Heroic Tales](https://squidhead-games.itch.io/heroic-tales) by Squidhead Games. It includes everything you need to run a game session: editable character sheets, a dice roller with pooling, and a roll log that tracks your results.
-
-Built as a portfolio project, this was my first fully self-led app — from rough sketch to working product.
+A full-featured digital companion, built with React, for the tabletop RPG [Heroic Tales](https://squidhead-games.itch.io/heroic-tales) by [Squidhead Games](https://squidhead-games.itch.io/). Includes everything you need to run a session — from character sheets to dice rolling and result tracking.
 
 **Live project**: [https://heroic-tales-app.netlify.app](https://heroic-tales-app.netlify.app)
 
----
-
-## Tech Stack
-
-- **React** (via Vite)
-- **styled-components** for scoped component styling
-- **Headless UI** for accessible modals/dialogs
-- Local state and localStorage for persistent storage
-- Deployed on **Netlify**
-
----
-
 ## Features
 
-- A dice pool builder for custom roll combinations
+- Builds dice pools dynamically by adding relevant skills directly from your character sheet.
 - Editable character sheets with an accordion-style layout
 - A log of previous rolls, with clear success/failure highlighting
-- Automatic saving of character and roll data in local storage
-
----
+- Automatic saving of character data in local storage
 
 ## Background
 
@@ -35,17 +19,13 @@ This project started as a way to push my React skills and to take a project from
 - Working with state and browser storage
 - Creating a simple, immersive interface that’s also accessible and responsive
 
----
+## Tech Stack
 
-## Future Improvements
-
-This is an ongoing project. Some things I plan to improve:
-- Building a responsive layout (for mobile)
-- Cleaner code structure and comments
-- Editing character images in-app
-- Touching up the styling
-
----
+- **React** (via Vite)
+- **styled-components** for scoped component styling
+- **Headless UI** for accessible modals/dialogs
+- Local state and localStorage for persistent storage
+- Deployed on **Netlify**
 
 ## Screenshots
 
@@ -61,14 +41,33 @@ Dice Roll Example:
 
 ![Dice Roll Example Gif](screenshots/dice-roll.gif)
 
----
+## Getting Started
+
+Clone the repo:
+
+    git clone git@github.com:gemini-mastiff/heroic-tales-app.git
+    cd heroic-tales-app
+
+Install the dependencies:
+
+    npm install
+
+Run the development server:
+
+    npm run dev
+
+## Future Improvements
+
+This is an ongoing project. Some things I plan to improve:
+- Mobile-optimized responsive layout
+- Refactoring for cleaner, more modular code
+- In-app character image editing
+- Refined styling for improved UX
 
 ## Credits
 
-This app is a fan-made tool built for [Heroic Tales](https://squidhead-games.itch.io/heroic-tales) by Squidhead Games.  
+This app is a fan-made tool built for [Heroic Tales](https://squidhead-games.itch.io/heroic-tales) by [Squidhead Games](https://squidhead-games.itch.io/).  
 All credit for the game design goes to them.
-
----
 
 ## 🔗 GitHub + Contact
 
